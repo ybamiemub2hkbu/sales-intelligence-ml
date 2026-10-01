@@ -9,7 +9,7 @@ This project takes the transaction export of a multi-channel retailer (stores, w
 
 ![Dashboard overview](docs/images/dashboard_overview.png)
 
-> **Live dashboard:** open [`reports/dashboard/index.html`](reports/dashboard/index.html) in a browser after cloning, or enable GitHub Pages (Settings → Pages → `main` / `/docs`) to host [`docs/index.html`](docs/index.html).
+> **[Open the live dashboard →](https://ybamiemub2hkbu.github.io/sales-intelligence-ml/)** (hosted on GitHub Pages from [`docs/index.html`](docs/index.html); after cloning you can also open [`reports/dashboard/index.html`](reports/dashboard/index.html) locally).
 
 ---
 
