@@ -1,0 +1,90 @@
+product_id,product_name,category,current_list_price,unit_cost,margin_now,elasticity,recommended_price,price_change_pct,action,weekly_units,annual_profit_uplift
+P008,Noise-Cancelling Headphones,Electronics,220.99,177.06,0.1988,-2.3385,242.99,0.0996,Raise,31.25,14426.8122
+P001,Wireless Earbuds,Electronics,63.99,63.33,0.0103,-2.3385,69.99,0.0938,Raise,56.9167,14030.9186
+P083,Extra Virgin Olive Oil,Gourmet Grocery,25.99,13.78,0.4698,-0.7439,28.99,0.1154,Raise,129.0,12160.758
+P020,Stand Mixer,Home & Kitchen,394.99,171.48,0.5659,-1.4251,433.99,0.0987,Raise,34.9167,10956.6574
+P052,Adjustable Dumbbells,Sports & Fitness,276.99,149.94,0.4587,-1.7614,304.99,0.1011,Raise,41.5833,8238.36
+P027,2-Person Tent,Outdoor & Camping,182.99,119.52,0.3468,-1.2715,200.99,0.0984,Raise,17.8333,8196.0167
+P014,Chef Knife Set,Home & Kitchen,116.99,65.48,0.4403,-1.4251,128.99,0.1026,Raise,38.75,7554.9913
+P012,Gaming Mouse,Electronics,50.99,43.39,0.149,-2.3385,55.99,0.0981,Raise,55.5,7285.3296
+P048,Down Vest,Apparel,111.99,63.7,0.4312,-1.5835,122.99,0.0982,Raise,44.75,6573.2736
+P028,Sleeping Bag,Outdoor & Camping,80.99,62.82,0.2243,-1.2715,88.99,0.0988,Raise,20.25,5313.4185
+P088,Gourmet Gift Basket,Gourmet Grocery,107.99,54.57,0.4947,-0.7439,118.99,0.1019,Raise,14.8333,5025.4365
+P016,Burr Coffee Grinder,Home & Kitchen,79.99,48.52,0.3934,-1.4251,87.99,0.1,Raise,31.6667,4917.6074
+P037,Sleeping Pad,Outdoor & Camping,74.99,54.44,0.274,-1.2715,81.99,0.0933,Raise,22.0,4627.1374
+P021,Air Fryer,Home & Kitchen,134.99,70.61,0.4769,-1.4251,147.99,0.0963,Raise,24.0833,4379.2792
+P081,Single-Origin Coffee Beans,Gourmet Grocery,22.99,12.67,0.4489,-0.7439,24.99,0.087,Raise,55.0,3599.9834
+P009,Smart Plug 2-Pack,Electronics,28.99,24.77,0.1456,-2.3385,31.99,0.1035,Raise,43.8333,3453.0542
+P018,Non-Stick Pan Set,Home & Kitchen,158.99,82.34,0.4821,-1.4251,174.99,0.1006,Raise,15.75,3412.0398
+P022,Linen Towel Set,Home & Kitchen,34.99,21.51,0.3853,-1.4251,37.99,0.0857,Raise,52.5833,3218.1868
+P062,Vitamin C Serum,Beauty & Care,29.99,13.02,0.5659,-1.204,32.99,0.1,Raise,71.4167,3098.5577
+P011,E-Reader,Electronics,143.99,107.9,0.2506,-2.3385,157.99,0.0972,Raise,14.0833,3097.4576
+P072,Building Blocks 500pc,Toys & Games,44.99,27.59,0.3868,-1.9363,48.99,0.0889,Raise,78.75,3055.7321
+P035,Cooler 30L,Outdoor & Camping,134.99,93.89,0.3045,-1.2715,147.99,0.0963,Raise,8.25,3016.325
+P071,Perfume 50ml,Beauty & Care,71.99,31.26,0.5658,-1.204,78.99,0.0972,Raise,25.3333,2574.8799
+P023,Glass Storage Set,Home & Kitchen,57.99,26.93,0.5356,-1.4251,63.99,0.1035,Raise,42.0833,2512.9039
+P006,Power Bank 20K,Electronics,37.99,33.54,0.1171,-2.3385,41.99,0.1053,Raise,21.5,2500.1994
+P003,Smartwatch,Electronics,233.99,153.76,0.3429,-2.3385,256.99,0.0983,Raise,17.1667,2388.5736
+P031,Hiking Backpack 40L,Outdoor & Camping,159.99,86.73,0.4579,-1.2715,175.99,0.1,Raise,7.1667,2165.9638
+P034,Trekking Poles,Outdoor & Camping,71.99,37.47,0.4795,-1.2715,78.99,0.0972,Raise,17.5,2165.0075
+P004,Phone Case,Electronics,23.99,18.12,0.2447,-2.3385,25.99,0.0834,Raise,62.5,2132.1935
+P026,Scented Candle,Home & Kitchen,17.99,13.14,0.2696,-1.4251,19.99,0.1112,Raise,38.75,2104.6287
+P010,Action Camera,Electronics,342.99,214.87,0.3735,-2.3385,374.99,0.0933,Raise,21.4167,2064.673
+P084,Trail Mix 1kg,Gourmet Grocery,18.99,11.44,0.3976,-0.7439,20.99,0.1053,Raise,29.6667,2027.7937
+P087,Hot Sauce Trio,Gourmet Grocery,17.99,14.34,0.2029,-0.7439,19.99,0.1112,Raise,24.5833,2011.9152
+P057,Fitness Tracker,Sports & Fitness,95.99,59.56,0.3795,-1.7614,105.99,0.1042,Raise,13.9167,1854.9298
+P017,French Press,Home & Kitchen,34.99,20.21,0.4224,-1.4251,37.99,0.0857,Raise,34.0,1826.6033
+P033,Camp Chair,Outdoor & Camping,55.99,32.33,0.4226,-1.2715,61.99,0.1072,Raise,13.6667,1704.8492
+P024,Electric Kettle,Home & Kitchen,43.99,30.92,0.2971,-1.4251,47.99,0.0909,Raise,15.6667,1636.5365
+P030,Headlamp,Outdoor & Camping,28.99,17.42,0.3991,-1.2715,31.99,0.1035,Raise,20.3333,1359.0058
+P073,Strategy Board Game,Toys & Games,54.99,19.36,0.6479,-1.9363,48.99,-0.1091,Lower,18.0833,1343.4184
+P043,Trail Running Shoes,Apparel,138.99,64.18,0.5382,-1.5835,152.99,0.1007,Raise,17.3333,1332.9172
+P075,RC Car,Toys & Games,71.99,40.94,0.4313,-1.9363,78.99,0.0972,Raise,34.25,1321.845
+P089,Dried Mango,Gourmet Grocery,7.99,5.94,0.2566,-0.7439,8.99,0.1252,Raise,33.6667,1302.2258
+P013,Tablet Sleeve,Electronics,28.99,23.01,0.2063,-2.3385,31.99,0.1035,Raise,21.6667,1298.9694
+P055,Foam Roller,Sports & Fitness,28.99,18.35,0.367,-1.7614,31.99,0.1035,Raise,29.8333,1284.42
+P015,Cast Iron Skillet,Home & Kitchen,60.99,27.96,0.5416,-1.4251,66.99,0.0984,Raise,20.1667,1168.8722
+P025,Dinnerware 16pc,Home & Kitchen,125.99,49.85,0.6043,-1.4251,138.99,0.1032,Raise,16.0,1130.4066
+P086,Raw Honey,Gourmet Grocery,9.99,8.19,0.1802,-0.7439,10.99,0.1001,Raise,25.6667,1078.6424
+P044,Wool Socks 3-Pack,Apparel,19.99,11.17,0.4412,-1.5835,21.99,0.1001,Raise,40.5,1018.3802
+P085,Loose Leaf Tea,Gourmet Grocery,12.99,10.35,0.2032,-0.7439,13.99,0.077,Raise,24.25,1014.6261
+P054,Insulated Water Bottle,Sports & Fitness,23.99,18.52,0.228,-1.7614,25.99,0.0834,Raise,18.9167,1000.7073
+P059,Gym Bag,Sports & Fitness,57.99,29.06,0.4989,-1.7614,63.99,0.1035,Raise,43.1667,984.3552
+P050,Leather Belt,Apparel,34.99,15.89,0.5459,-1.5835,37.99,0.0857,Raise,60.75,950.2689
+P029,Camping Stove,Outdoor & Camping,95.99,41.44,0.5683,-1.2715,105.99,0.1042,Raise,7.4167,909.3574
+P058,Kettlebell 12kg,Sports & Fitness,56.99,36.47,0.3601,-1.7614,62.99,0.1053,Raise,9.25,823.9905
+P032,Water Filter,Outdoor & Camping,48.99,26.81,0.4527,-1.2715,53.99,0.1021,Raise,7.9167,757.7357
+P066,Beard Oil,Beauty & Care,18.99,8.23,0.5666,-1.204,20.99,0.1053,Raise,24.6667,706.4789
+P053,Resistance Bands,Sports & Fitness,20.99,14.02,0.3321,-1.7614,22.99,0.0953,Raise,18.6667,651.652
+P068,Bamboo Toothbrush 4-Pack,Beauty & Care,10.99,4.76,0.5669,-1.204,11.99,0.091,Raise,44.6667,651.086
+P070,Face Mask Set,Beauty & Care,27.99,10.44,0.627,-1.204,30.99,0.1072,Raise,19.25,629.7848
+P082,Artisan Dark Chocolate,Gourmet Grocery,8.99,4.92,0.4527,-0.7439,9.99,0.1112,Raise,18.4167,591.2726
+P039,Rain Jacket,Apparel,151.99,60.78,0.6001,-1.5835,164.99,0.0855,Raise,33.1667,517.2287
+P061,Yoga Block Set,Sports & Fitness,17.99,11.23,0.3758,-1.7614,19.99,0.1112,Raise,18.9167,507.0932
+P038,Camp Lantern,Outdoor & Camping,38.99,22.53,0.4222,-1.2715,42.99,0.1026,Raise,5.5,460.6737
+P063,Daily Moisturizer,Beauty & Care,32.99,12.57,0.619,-1.204,35.99,0.0909,Raise,13.0,452.9422
+P019,Cutting Board,Home & Kitchen,40.99,17.56,0.5716,-1.4251,44.99,0.0976,Raise,14.4167,443.2602
+P047,Chino Pants,Apparel,58.99,19.67,0.6666,-1.5835,52.99,-0.1017,Lower,48.75,427.7235
+P046,Organic Cotton Tee,Apparel,34.99,10.94,0.6873,-1.5835,30.99,-0.1143,Lower,32.9167,427.5153
+P078,Card Game,Toys & Games,19.99,8.06,0.5968,-1.9363,17.99,-0.1001,Lower,31.5833,408.3048
+P045,Denim Jacket,Apparel,125.99,40.84,0.6758,-1.5835,112.99,-0.1032,Lower,10.6667,321.5406
+P074,Jigsaw Puzzle 1000pc,Toys & Games,28.99,12.3,0.5757,-1.9363,25.99,-0.1035,Lower,21.4167,250.3547
+P067,Lip Balm 4-Pack,Beauty & Care,10.99,3.66,0.667,-1.204,11.99,0.091,Raise,27.75,246.4978
+P080,Art Supplies Kit,Toys & Games,40.99,17.18,0.5809,-1.9363,36.99,-0.0976,Lower,13.0,241.7026
+P007,10in Tablet,Electronics,452.99,250.7,0.4466,-2.3385,437.99,-0.0331,Lower,13.0,233.0036
+P077,Science Kit,Toys & Games,46.99,19.65,0.5818,-1.9363,41.99,-0.1064,Lower,9.5833,217.9731
+P051,Yoga Mat,Sports & Fitness,43.99,25.02,0.4312,-1.7614,47.99,0.0909,Raise,5.5833,213.5097
+P064,Mineral Sunscreen,Beauty & Care,23.99,6.29,0.7378,-1.204,25.99,0.0834,Raise,21.25,209.3338
+P069,Body Wash,Beauty & Care,10.99,4.42,0.5978,-1.204,11.99,0.091,Raise,15.8333,202.9305
+P060,Protein Shaker,Sports & Fitness,12.99,7.26,0.4411,-1.7614,13.99,0.077,Raise,20.5,187.456
+P036,Insect Repellent,Outdoor & Camping,13.99,7.9,0.4353,-1.2715,14.99,0.0715,Raise,8.25,173.377
+P040,Fleece Pullover,Apparel,77.99,26.63,0.6585,-1.5835,71.99,-0.0769,Lower,24.0,162.9073
+P042,Hiking Boots,Apparel,173.99,66.24,0.6193,-1.5835,179.99,0.0345,Raise,46.3333,130.3563
+P065,Shampoo Bar,Beauty & Care,17.99,4.78,0.7343,-1.204,19.99,0.1112,Raise,9.1667,89.1629
+P076,Plush Bear,Toys & Games,16.99,8.54,0.4974,-1.9363,17.99,0.0589,Raise,115.5833,56.2605
+P041,Merino Base Layer,Apparel,97.99,34.98,0.643,-1.5835,94.99,-0.0306,Lower,35.75,53.4147
+P005,USB-C Fast Charger,Electronics,34.99,20.73,0.4075,-2.3385,35.99,0.0286,Raise,30.5,42.5699
+P049,Sun Hat,Apparel,38.99,13.53,0.653,-1.5835,36.99,-0.0513,Lower,19.75,41.1725
+P002,Bluetooth Speaker,Electronics,81.99,49.44,0.397,-2.3385,85.99,0.0488,Raise,4.6667,35.7233
+P056,Jump Rope,Sports & Fitness,20.99,8.44,0.5979,-1.7614,19.99,-0.0476,Lower,14.1667,27.2809
+P079,Wooden Train Set,Toys & Games,67.99,33.99,0.5001,-1.9363,69.99,0.0294,Raise,6.3333,11.4349

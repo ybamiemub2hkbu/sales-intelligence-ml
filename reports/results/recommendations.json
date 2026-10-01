@@ -1,0 +1,66 @@
+[
+  {
+    "area": "Pricing",
+    "owner": "Merchandising",
+    "impact_value": 201412.10633216766,
+    "title": "Re-price within a +/-10% guardrail using measured elasticities",
+    "detail": "76 products can take a price increase and 13 should come down. Largest gains: Electronics ($53.0K), Home & Kitchen ($45.3K), Outdoor & Camping ($30.8K). Roll out as an A/B price test on 20% of stores first.",
+    "impact": "+$201.4K gross profit per year (+5.1%)"
+  },
+  {
+    "area": "Promotions",
+    "owner": "Marketing",
+    "impact_value": 79890.82916666666,
+    "title": "Cut discount depth on loss-making promotions",
+    "detail": "9 of 12 recurring promotions lose gross profit once the sales that would have happened anyway are removed (overall ROI -0.41). Worst: Black Friday Week (-$85.6K), Mid-Year Mega Sale (-$29.2K), Back to School Tech (-$28.4K). Only 7.4% of revenue booked during promotions is truly incremental. Test shallower discounts and target Deal Hunters only.",
+    "impact": "~$79.9K gross profit per year recovered"
+  },
+  {
+    "area": "Retention",
+    "owner": "CRM",
+    "impact_value": 30541.044913719576,
+    "title": "Run a model-targeted retention campaign to 2,162 customers",
+    "detail": "3,397 active customers have >60% probability of not buying in the next 120 days ($491.6K revenue at risk). On the out-of-time test, contacting the top 27% ranked by risk x value maximised profit; contacting everyone would lose money. Strongest signals: days since last order, number of orders, orders in the last 90 days.",
+    "impact": "$122.2K gross profit at stake in the target list"
+  },
+  {
+    "area": "Operations",
+    "owner": "Ops & IT",
+    "impact_value": 20569.61184756933,
+    "title": "Put automated incident alerts on daily sales",
+    "detail": "10 material incidents were detected across 43 monitored series, costing $61.7K in unexplained drops, including a website outage and a 3-week stock-out. Alerting the same day shortens time-to-fix.",
+    "impact": "Up to $20.6K per year of revenue protected"
+  },
+  {
+    "area": "Merchandising",
+    "owner": "E-commerce & Stores",
+    "impact_value": null,
+    "title": "Launch bundles and 'frequently bought together' for the strongest product pairs",
+    "detail": "Top pairs: Water Filter + Hiking Backpack 40L (lift 27x, 34% attach); Yoga Block Set + Yoga Mat (lift 26x, 14% attach); Camping Stove + Camp Lantern (lift 24x, 26% attach). Orders containing these pairs average $347 vs $174 overall. Co-locate them in store and on product pages.",
+    "impact": "Higher basket size on the highest-affinity pairs"
+  },
+  {
+    "area": "Planning",
+    "owner": "Supply chain & Finance",
+    "impact_value": null,
+    "title": "Plan next quarter at $1.69M (+19.2% YoY)",
+    "detail": "80% interval $1.33M - $2.14M. Fastest growth expected in Toys & Games (+28%) and Sports & Fitness (+26%); slowest in Apparel (+16%). Forecast error is 14% lower than the seasonal-naive method.",
+    "impact": "Inventory sized to demand, fewer stock-outs and markdowns"
+  },
+  {
+    "area": "Customers",
+    "owner": "CRM",
+    "impact_value": null,
+    "title": "Protect Champions; move new customers to a second purchase fast",
+    "detail": "Champions are 23% of customers but 70% of revenue. 1,514 New & Promising customers have bought once; a 30-day onboarding journey is the cheapest lever to convert them into regulars.",
+    "impact": "Revenue concentration de-risked, higher repeat rate"
+  },
+  {
+    "area": "Returns",
+    "owner": "Product & E-commerce",
+    "impact_value": null,
+    "title": "Fix online returns in Apparel",
+    "detail": "Online Apparel return rate is 22.8% vs 16.9% in store; returns erased $1.71M of revenue overall. Better size guides, fit reviews and photos target the gap.",
+    "impact": "Lower reverse-logistics cost, higher net revenue"
+  }
+]

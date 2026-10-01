@@ -1,0 +1,10 @@
+check,rows_affected,action
+rows in raw export,204477,-
+exact duplicate rows,612,dropped
+"duplicate (order_id, line_number) keys",0,kept first occurrence
+non-positive quantity,18,"absolute value taken (entry error, returns are flagged separately)"
+unit price keyed in cents (~100x expected),12,divided by 100
+other unit-price outliers,0,replaced by list price x (1 - discount)
+missing channel,815,imputed with customer's modal channel
+unknown product_id,0,dropped
+rows after cleaning,203865,612 rows removed in total

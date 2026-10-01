@@ -1,0 +1,165 @@
+{
+  "orders": 92673,
+  "multi_item_order_share": 0.679604631338146,
+  "n_rules": 4884,
+  "n_strong_rules": 44,
+  "single_order_aov": 174.39419420974826,
+  "bundles": [
+    {
+      "bundle": "Water Filter + Hiking Backpack 40L",
+      "categories": "Outdoor & Camping / Outdoor & Camping",
+      "orders_together": 355,
+      "lift": 26.734,
+      "confidence": 0.341,
+      "avg_order_value_with_bundle": 346.612
+    },
+    {
+      "bundle": "Yoga Block Set + Yoga Mat",
+      "categories": "Sports & Fitness / Sports & Fitness",
+      "orders_together": 249,
+      "lift": 25.533,
+      "confidence": 0.144,
+      "avg_order_value_with_bundle": 237.419
+    },
+    {
+      "bundle": "Camping Stove + Camp Lantern",
+      "categories": "Outdoor & Camping / Outdoor & Camping",
+      "orders_together": 258,
+      "lift": 24.372,
+      "confidence": 0.262,
+      "avg_order_value_with_bundle": 270.12
+    },
+    {
+      "bundle": "Single-Origin Coffee Beans + Burr Coffee Grinder",
+      "categories": "Gourmet Grocery / Home & Kitchen",
+      "orders_together": 1438,
+      "lift": 17.327,
+      "confidence": 0.469,
+      "avg_order_value_with_bundle": 283.988
+    },
+    {
+      "bundle": "10in Tablet + Tablet Sleeve",
+      "categories": "Electronics / Electronics",
+      "orders_together": 607,
+      "lift": 16.874,
+      "confidence": 0.428,
+      "avg_order_value_with_bundle": 543.711
+    },
+    {
+      "bundle": "Sleeping Bag + 2-Person Tent",
+      "categories": "Outdoor & Camping / Outdoor & Camping",
+      "orders_together": 1323,
+      "lift": 15.18,
+      "confidence": 0.462,
+      "avg_order_value_with_bundle": 391.387
+    },
+    {
+      "bundle": "Fitness Tracker + Insulated Water Bottle",
+      "categories": "Sports & Fitness / Sports & Fitness",
+      "orders_together": 402,
+      "lift": 14.717,
+      "confidence": 0.271,
+      "avg_order_value_with_bundle": 254.244
+    },
+    {
+      "bundle": "Single-Origin Coffee Beans + French Press",
+      "categories": "Gourmet Grocery / Home & Kitchen",
+      "orders_together": 1216,
+      "lift": 12.314,
+      "confidence": 0.396,
+      "avg_order_value_with_bundle": 221.114
+    },
+    {
+      "bundle": "Wool Socks 3-Pack + Hiking Boots",
+      "categories": "Apparel / Apparel",
+      "orders_together": 1726,
+      "lift": 11.553,
+      "confidence": 0.518,
+      "avg_order_value_with_bundle": 327.756
+    },
+    {
+      "bundle": "Mineral Sunscreen + Sun Hat",
+      "categories": "Beauty & Care / Apparel",
+      "orders_together": 395,
+      "lift": 10.442,
+      "confidence": 0.239,
+      "avg_order_value_with_bundle": 193.045
+    },
+    {
+      "bundle": "USB-C Fast Charger + Smartwatch",
+      "categories": "Electronics / Electronics",
+      "orders_together": 672,
+      "lift": 8.647,
+      "confidence": 0.216,
+      "avg_order_value_with_bundle": 362.458
+    },
+    {
+      "bundle": "Sleeping Pad + Sleeping Bag",
+      "categories": "Outdoor & Camping / Outdoor & Camping",
+      "orders_together": 676,
+      "lift": 7.619,
+      "confidence": 0.235,
+      "avg_order_value_with_bundle": 323.312
+    },
+    {
+      "bundle": "Glass Storage Set + Stand Mixer",
+      "categories": "Home & Kitchen / Home & Kitchen",
+      "orders_together": 718,
+      "lift": 6.391,
+      "confidence": 0.197,
+      "avg_order_value_with_bundle": 578.859
+    },
+    {
+      "bundle": "Adjustable Dumbbells + Gym Bag",
+      "categories": "Sports & Fitness / Sports & Fitness",
+      "orders_together": 959,
+      "lift": 5.617,
+      "confidence": 0.253,
+      "avg_order_value_with_bundle": 495.815
+    },
+    {
+      "bundle": "Hiking Boots + Trekking Poles",
+      "categories": "Apparel / Outdoor & Camping",
+      "orders_together": 711,
+      "lift": 4.943,
+      "confidence": 0.171,
+      "avg_order_value_with_bundle": 385.374
+    }
+  ],
+  "complements_recovered": {
+    "found": 16,
+    "total": 16
+  },
+  "top_category_pairs": [
+    {
+      "antecedent": "Gourmet Grocery",
+      "consequent": "Home & Kitchen",
+      "lift": 1.162
+    },
+    {
+      "antecedent": "Home & Kitchen",
+      "consequent": "Gourmet Grocery",
+      "lift": 1.162
+    },
+    {
+      "antecedent": "Apparel",
+      "consequent": "Outdoor & Camping",
+      "lift": 0.781
+    },
+    {
+      "antecedent": "Outdoor & Camping",
+      "consequent": "Apparel",
+      "lift": 0.781
+    },
+    {
+      "antecedent": "Apparel",
+      "consequent": "Beauty & Care",
+      "lift": 0.765
+    },
+    {
+      "antecedent": "Beauty & Care",
+      "consequent": "Apparel",
+      "lift": 0.765
+    }
+  ]
+}

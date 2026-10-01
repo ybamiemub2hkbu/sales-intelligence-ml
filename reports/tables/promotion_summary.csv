@@ -1,0 +1,13 @@
+promo_name,runs,discount_pct,scope,avg_uplift_pct,incremental_revenue,discount_cost,post_event_gp,total_incremental_gp,roi,verdict
+Valentine's Beauty,3,0.15,Beauty & Care,0.1913,3061.4423,3387.15,711.1499,1514.6549,0.4472,Optimise
+Gourmet Gifting,3,0.1,Gourmet Grocery,0.2621,14768.3399,8397.8,-167.3458,2613.9992,0.3113,Optimise
+Holiday Toy Event,3,0.2,Toys & Games,0.5066,33500.2974,27610.0,526.3149,668.5539,0.0242,Optimise
+Mother's Day Gifts,3,0.15,"Beauty & Care, Home & Kitchen",0.0947,11719.399,23915.25,-592.0925,-6095.4757,-0.2549,Redesign / stop
+New Year Fitness Push,3,0.2,Sports & Fitness,0.0656,5006.9431,28538.4,3224.2468,-8105.1914,-0.284,Redesign / stop
+Spring Fashion Event,3,0.25,Apparel,0.0782,5636.6603,53620.0,-2959.8489,-16274.3316,-0.3035,Redesign / stop
+Back to School Tech,3,0.15,"Electronics, Apparel",0.0794,22708.5653,71042.25,1848.6636,-28382.2967,-0.3995,Redesign / stop
+Winter Apparel Clearance,3,0.4,Apparel,-0.1275,-11104.511,67511.2,-1686.1785,-28096.9793,-0.4162,Redesign / stop
+Black Friday Week,3,0.3,ALL,0.0655,24713.9203,194321.1,-651.6939,-85586.8314,-0.4404,Redesign / stop
+Summer Outdoor Sale,3,0.2,Outdoor & Camping,0.0867,14546.0137,50107.2,152.6918,-23313.7557,-0.4653,Redesign / stop
+Electronics Flash Weekend,3,0.35,Electronics,-0.0895,-3225.2633,17661.7,-2203.0927,-14622.4753,-0.8279,Redesign / stop
+Mid-Year Mega Sale,3,0.15,ALL,0.0528,8493.5183,33111.75,-14909.3313,-29195.1504,-0.8817,Redesign / stop

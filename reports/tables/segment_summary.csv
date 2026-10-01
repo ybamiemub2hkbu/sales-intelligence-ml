@@ -1,0 +1,6 @@
+segment,customers,revenue,median_recency_days,median_orders,median_spend,median_aov,discount_share,digital_share,median_tenure_days,return_rate,n_categories,customer_share,revenue_share,action
+Champions,3068,11375343.59,24.0,15.0,2652.655,173.1422,0.1526,0.6174,888.0,0.0849,6.2526,0.2328,0.7038,"Protect: VIP early access, loyalty tier upgrades, no blanket discounts needed."
+Lapsed / Hibernating,5266,2832404.1,704.0,1.0,234.175,127.7608,0.1604,0.5954,887.0,0.0863,2.7332,0.3996,0.1753,One win-back attempt with a time-boxed offer; suppress from paid media if no response.
+Steady Regulars,2764,1729224.94,117.0,3.0,516.57,167.714,0.1099,0.7028,356.0,0.0738,3.3755,0.2098,0.107,"Grow basket: cross-sell from basket rules, subscribe-and-save on consumables."
+New & Promising,1514,126523.55,93.0,1.0,67.96,57.535,0.0202,0.7646,118.0,0.1159,1.5291,0.1149,0.0078,Second-purchase journey within 30 days: onboarding series + category recommendation.
+Deal Hunters,565,98136.98,41.0,1.0,108.78,76.765,0.8371,0.7262,144.0,0.1034,1.9363,0.0429,0.0061,"Monetise promos: target with event previews, steer to high-margin bundles, cap discount depth."

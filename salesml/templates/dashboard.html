@@ -1,0 +1,798 @@
+<title>Meridian Sales Intelligence</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..100,500..800&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a store-operations console - left rail of decision areas, one working view at a time,
+   summary tiles first, then the chart, then the table behind it. */
+:root {
+  --bg: #f3f5f2; --surface: #ffffff; --surface-2: #eaeee9; --ink: #16201b; --ink-2: #4c5952;
+  --muted: #7a8680; --line: #dbe1dc; --accent: #1e5e48; --accent-soft: #d9ebe2; --on-accent: #ffffff;
+  --neutral: #c3c2b7;
+  --s1: #2a78d6; --s2: #eb6834; --s3: #1baf7a; --s4: #eda100; --s5: #e87ba4; --s6: #008300; --s7: #4a3aa7; --s8: #e34948;
+  --good: #0ca30c; --warn: #fab219; --serious: #ec835a; --crit: #d03b3b; --good-ink: #006300;
+  --div-neg: #2a78d6; --div-pos: #e34948; --div-mid: #f0efec;
+  --font-display: "Archivo", "Arial Narrow", system-ui, sans-serif;
+  --font-body: "Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-data: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+  --radius: 10px;
+  --step--1: 0.8125rem; --step-0: 0.9375rem; --step-1: 1.125rem; --step-2: 1.5rem; --step-3: 2rem;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1411; --surface: #171e1a; --surface-2: #202923; --ink: #edf2ee; --ink-2: #b7c2bc;
+    --muted: #869189; --line: #2a3530; --accent: #6cc4a1; --accent-soft: #1d362c; --on-accent: #0f1411;
+    --neutral: #5b5f5a;
+    --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500; --s5: #d55181; --s6: #008300; --s7: #9085e9; --s8: #e66767;
+    --good-ink: #0ca30c; --div-neg: #3987e5; --div-pos: #e66767; --div-mid: #383835;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1411; --surface: #171e1a; --surface-2: #202923; --ink: #edf2ee; --ink-2: #b7c2bc;
+  --muted: #869189; --line: #2a3530; --accent: #6cc4a1; --accent-soft: #1d362c; --on-accent: #0f1411;
+  --neutral: #5b5f5a;
+  --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500; --s5: #d55181; --s6: #008300; --s7: #9085e9; --s8: #e66767;
+  --good-ink: #0ca30c; --div-neg: #3987e5; --div-pos: #e66767; --div-mid: #383835;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: var(--step-0); line-height: 1.5; }
+h1, h2, h3 { font-family: var(--font-display); font-stretch: 85%; text-wrap: balance; margin: 0; letter-spacing: -0.01em; }
+h2 { font-size: var(--step-3); font-weight: 750; line-height: 1.1; }
+h3 { font-size: var(--step-1); font-weight: 700; }
+p { margin: 0; }
+a { color: var(--accent); }
+.num, td.n, th.n { font-variant-numeric: tabular-nums; }
+.mono { font-family: var(--font-data); font-size: 0.85em; }
+
+.app { display: grid; grid-template-columns: 236px minmax(0, 1fr); min-height: 100vh; }
+.rail { background: var(--surface); border-right: 1px solid var(--line); padding-block: 22px; padding-inline: 16px;
+  position: sticky; top: env(safe-area-inset-top, 0px); height: 100vh; display: flex; flex-direction: column; gap: 22px; }
+.brand { display: grid; gap: 2px; padding-inline: 8px; }
+.brand .eyebrow { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+.brand .name { font-family: var(--font-display); font-stretch: 80%; font-weight: 800; font-size: 1.35rem; line-height: 1.05; }
+.nav { display: grid; gap: 2px; }
+.nav button { all: unset; cursor: pointer; display: flex; align-items: center; gap: 10px; padding: 9px 10px; border-radius: 8px;
+  color: var(--ink-2); font-weight: 500; font-size: 0.92rem; }
+.nav button:hover { background: var(--surface-2); color: var(--ink); }
+.nav button[aria-selected="true"] { background: var(--accent-soft); color: var(--ink); font-weight: 600; }
+.nav button:focus-visible, .chip:focus-visible, .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.nav .ix { font-family: var(--font-data); font-size: 0.72rem; color: var(--muted); width: 1.4em; }
+.rail-foot { margin-top: auto; font-size: 0.78rem; color: var(--muted); padding-inline: 8px; display: grid; gap: 6px; }
+.sim-chip { display: inline-flex; align-items: center; gap: 6px; font-size: 0.72rem; font-weight: 600; color: var(--ink-2);
+  border: 1px solid var(--line); border-radius: 999px; padding: 2px 9px; width: max-content; }
+.sim-chip::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--warn); }
+
+main { padding-block: 28px 56px; padding-inline: clamp(16px, 3vw, 40px); min-width: 0; }
+.view { display: grid; gap: 22px; max-width: 1240px; }
+.view-head { display: grid; gap: 6px; }
+.view-head .lede { color: var(--ink-2); max-width: 68ch; }
+.eyebrow-s { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; }
+.tile { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; display: grid; gap: 4px; align-content: start; }
+.tile .k { font-size: 0.78rem; color: var(--ink-2); font-weight: 500; }
+.tile .v { font-family: var(--font-display); font-stretch: 85%; font-size: 1.75rem; font-weight: 750; line-height: 1.1; }
+.tile .d { font-size: 0.8rem; color: var(--muted); }
+.tile .d.up { color: var(--good-ink); font-weight: 600; }
+
+.grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.grid-3-2 { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: 16px; }
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; display: grid; gap: 12px; min-width: 0; align-content: start; }
+.panel-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 6px 16px; }
+.panel-head .sub { color: var(--ink-2); font-size: var(--step--1); }
+.chart { position: relative; height: 300px; width: 100%; }
+.chart.tall { height: 360px; }
+.chart.short { height: 240px; }
+.note { font-size: var(--step--1); color: var(--muted); }
+
+.tbl-wrap { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 0.86rem; }
+th { text-align: left; font-weight: 600; color: var(--ink-2); font-size: 0.76rem; letter-spacing: 0.02em; padding: 8px 10px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+td { padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+tr:last-child td { border-bottom: 0; }
+td.n, th.n { text-align: right; white-space: nowrap; }
+tr.hl td { background: var(--accent-soft); }
+.bar-cell { display: grid; grid-template-columns: minmax(60px, 1fr) auto; align-items: center; gap: 8px; min-width: 150px; }
+.bar { height: 8px; border-radius: 0 4px 4px 0; background: var(--s1); }
+.bar-track { background: transparent; }
+
+.pill { display: inline-flex; align-items: center; gap: 6px; font-size: 0.74rem; font-weight: 600; padding: 2px 9px 2px 7px;
+  border-radius: 999px; background: var(--surface-2); color: var(--ink); white-space: nowrap; }
+.pill i { width: 8px; height: 8px; border-radius: 50%; background: var(--muted); font-style: normal; }
+.pill.good i { background: var(--good); } .pill.warn i { background: var(--warn); }
+.pill.serious i { background: var(--serious); } .pill.crit i { background: var(--crit); }
+.pill.area { background: transparent; border: 1px solid var(--line); color: var(--ink-2); }
+
+.recs { display: grid; gap: 0; counter-reset: rec; }
+.rec { display: grid; grid-template-columns: 2.2rem minmax(0, 1fr) auto; gap: 4px 14px; padding: 14px 0; border-top: 1px solid var(--line); }
+.rec:first-child { border-top: 0; padding-top: 4px; }
+.rec .rk { font-family: var(--font-display); font-stretch: 80%; font-weight: 800; font-size: 1.45rem; color: var(--accent); line-height: 1.1; }
+.rec .t { font-weight: 600; }
+.rec .meta { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; font-size: 0.8rem; color: var(--ink-2); margin-top: 3px; }
+.rec .detail { grid-column: 2 / 4; color: var(--ink-2); font-size: 0.86rem; max-width: 95ch; }
+.rec .impact { font-weight: 600; font-size: 0.84rem; text-align: right; max-width: 22ch; color: var(--ink); }
+
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { all: unset; cursor: pointer; font-size: 0.8rem; font-weight: 500; padding: 5px 11px; border-radius: 999px; border: 1px solid var(--line);
+  color: var(--ink-2); background: var(--surface); display: inline-flex; align-items: center; gap: 7px; }
+.chip:hover { border-color: var(--muted); color: var(--ink); }
+.chip[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.chip .sw { width: 9px; height: 9px; border-radius: 3px; }
+
+.controls { display: grid; gap: 14px; }
+.ctl { display: grid; gap: 6px; }
+.ctl label { font-size: 0.8rem; font-weight: 600; color: var(--ink-2); display: flex; justify-content: space-between; gap: 8px; }
+.ctl label output { font-family: var(--font-data); color: var(--ink); font-weight: 500; }
+input[type="range"] { width: 100%; accent-color: var(--accent); }
+select, input[type="search"] { font: inherit; font-size: 0.9rem; padding: 8px 10px; border-radius: 8px; border: 1px solid var(--line);
+  background: var(--surface); color: var(--ink); width: 100%; }
+select:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.readout { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; }
+.readout div { background: var(--surface-2); border-radius: 8px; padding: 10px 12px; display: grid; gap: 2px; }
+.readout .k { font-size: 0.74rem; color: var(--ink-2); }
+.readout .v { font-family: var(--font-data); font-size: 1.05rem; font-weight: 500; }
+
+.quad { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+.quad .tile .v { font-size: 1.5rem; }
+
+.suggest { display: flex; flex-wrap: wrap; gap: 6px; min-height: 30px; }
+.cust-card { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; }
+.meter { height: 8px; background: var(--surface-2); border-radius: 4px; overflow: hidden; }
+.meter span { display: block; height: 100%; background: var(--crit); border-radius: 0 4px 4px 0; }
+
+.range-cell { position: relative; height: 22px; min-width: 200px; }
+.range-cell .axis { position: absolute; inset: 10px 0 auto 0; height: 1px; background: var(--line); }
+.range-cell .ci { position: absolute; top: 7px; height: 8px; background: var(--s1); opacity: 0.35; border-radius: 4px; }
+.range-cell .pt { position: absolute; top: 5px; width: 12px; height: 12px; margin-left: -6px; border-radius: 50%; background: var(--s1); border: 2px solid var(--surface); }
+.range-cell .truth { position: absolute; top: 2px; width: 2px; height: 18px; margin-left: -1px; background: var(--ink); }
+.range-cell .unit { position: absolute; top: 0; bottom: 0; width: 1px; background: var(--muted); opacity: 0.6; }
+
+.heat { display: grid; gap: 2px; font-size: 0.74rem; }
+.heat .c { padding: 8px 4px; text-align: center; border-radius: 3px; font-variant-numeric: tabular-nums; color: var(--ink); }
+.heat .h { color: var(--ink-2); font-weight: 600; padding: 6px 4px; display: flex; align-items: flex-end; }
+.heat .rh { justify-content: flex-start; text-align: left; align-items: center; }
+
+.legend-row { display: flex; flex-wrap: wrap; gap: 14px; font-size: 0.78rem; color: var(--ink-2); align-items: center; }
+.legend-row span { display: inline-flex; align-items: center; gap: 6px; }
+.legend-row b { width: 12px; height: 4px; border-radius: 2px; display: inline-block; }
+
+@media (max-width: 1000px) {
+  .grid-2, .grid-3-2 { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 820px) {
+  .app { grid-template-columns: minmax(0, 1fr); }
+  .rail { position: sticky; top: env(safe-area-inset-top, 0px); height: auto; z-index: 5; padding-block: 12px 8px; gap: 10px; border-right: 0; border-bottom: 1px solid var(--line); }
+  .nav { display: flex; overflow-x: auto; gap: 4px; padding-bottom: 4px; }
+  .nav button { white-space: nowrap; padding: 7px 10px; }
+  .nav .ix, .rail-foot { display: none; }
+  h2 { font-size: var(--step-2); }
+  .rec { grid-template-columns: 1.8rem minmax(0, 1fr); }
+  .rec .impact { grid-column: 2; text-align: left; }
+  .rec .detail { grid-column: 2; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+
+<div class="app">
+  <aside class="rail">
+    <div class="brand">
+      <span class="eyebrow">Sales intelligence</span>
+      <span class="name" id="brand-name">Meridian Home &amp; Outdoor</span>
+    </div>
+    <nav class="nav" role="tablist" aria-label="Sections" id="nav"></nav>
+    <div class="rail-foot">
+      <span class="sim-chip">Simulated company data</span>
+      <span id="foot-period"></span>
+      <span>Generated by <span class="mono">python main.py</span></span>
+    </div>
+  </aside>
+  <main id="main"></main>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script>
+const D = /*__PAYLOAD__*/null;
+const CATS = ["Electronics", "Home & Kitchen", "Outdoor & Camping", "Apparel", "Sports & Fitness", "Beauty & Care", "Toys & Games", "Gourmet Grocery"];
+const SECTIONS = [
+  ["overview", "Overview"], ["forecast", "Forecast"], ["customers", "Customers"], ["retention", "Retention"],
+  ["pricing", "Pricing"], ["basket", "Basket"], ["promotions", "Promotions"], ["incidents", "Incidents"], ["quality", "Data & models"]
+];
+
+/* ---------- helpers ---------- */
+const $ = (s, r = document) => r.querySelector(s);
+const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+function money(v, d = 0) {
+  const a = Math.abs(v), s = v < 0 ? "-" : "";
+  if (a >= 1e6) return s + "$" + (a / 1e6).toFixed(2) + "M";
+  if (a >= 1e4) return s + "$" + (a / 1e3).toFixed(1) + "K";
+  return s + "$" + a.toLocaleString("en-US", { minimumFractionDigits: d, maximumFractionDigits: d });
+}
+const pct = (v, d = 1) => (v * 100).toFixed(d) + "%";
+const spct = (v, d = 1) => (v >= 0 ? "+" : "") + (v * 100).toFixed(d) + "%";
+const int = v => Math.round(v).toLocaleString("en-US");
+const catColor = c => css("--s" + (CATS.indexOf(c) + 1));
+function alpha(color, a) {
+  const h = color.replace("#", "");
+  const n = parseInt(h.length === 3 ? h.split("").map(x => x + x).join("") : h, 16);
+  return `rgba(${(n >> 16) & 255},${(n >> 8) & 255},${n & 255},${a})`;
+}
+const pill = (label, kind = "") => `<span class="pill ${kind}"><i></i>${esc(label)}</span>`;
+const FEATURE_NAMES = {
+  recency_days: "Days since last order", frequency: "Number of orders", orders_90d: "Orders in last 90 days",
+  orders_prev_90d: "Orders in prior 90 days", avg_interpurchase_days: "Usual gap between orders",
+  revenue_90d: "Spend in last 90 days", revenue_365d: "Spend in last 365 days", recency_vs_cadence: "Days since last order vs usual gap",
+  tenure_days: "Customer tenure", monetary: "Lifetime spend", order_trend: "Order trend (90d vs prior 90d)",
+  avg_order_value: "Average order value", discount_share: "Share bought on discount", avg_discount: "Average discount",
+  n_categories: "Categories bought", digital_share: "Online + app share", mobile_share: "App share", return_rate: "Return rate",
+  items_per_order: "Items per order", promo_order_share: "Orders on promotion", loyalty_member: "Loyalty member"
+};
+const fname = f => FEATURE_NAMES[f] || f.replace(/_/g, " ").replace("=", ": ");
+
+/* ---------- charts ---------- */
+const charts = {};
+function chartTheme() {
+  Chart.defaults.color = css("--ink-2");
+  Chart.defaults.borderColor = css("--line");
+  Chart.defaults.font.family = css("--font-body");
+  Chart.defaults.font.size = 12;
+  Chart.defaults.plugins.legend.labels.boxWidth = 12;
+  Chart.defaults.plugins.legend.labels.boxHeight = 4;
+  Chart.defaults.plugins.tooltip.backgroundColor = css("--ink");
+  Chart.defaults.plugins.tooltip.titleColor = css("--bg");
+  Chart.defaults.plugins.tooltip.bodyColor = css("--bg");
+  Chart.defaults.plugins.tooltip.padding = 10;
+  Chart.defaults.plugins.tooltip.cornerRadius = 6;
+  Chart.defaults.layout.padding = { left: 6, right: 6 };
+  Chart.defaults.animation.duration = matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 400;
+}
+function mk(id, cfg) {
+  if (charts[id]) charts[id].destroy();
+  const el = document.getElementById(id);
+  if (!el) return null;
+  charts[id] = new Chart(el, cfg);
+  return charts[id];
+}
+const moneyTick = v => { const a = Math.abs(v), sg = v < 0 ? "-" : "";
+  return a >= 1e6 ? sg + "$" + (a / 1e6).toFixed(a >= 1e7 ? 0 : 1) + "M" : a >= 1e3 ? sg + "$" + Math.round(a / 1e3) + "K" : sg + "$" + Math.round(a); };
+const pctTick = v => Math.round(v * 100) + "%";
+function axes(yFmt = moneyTick, extra = {}) {
+  return {
+    x: { grid: { display: false }, ticks: { maxRotation: 0, autoSkipPadding: 14 }, ...(extra.x || {}) },
+    y: { grid: { color: css("--line") }, border: { display: false }, ticks: { callback: yFmt }, ...(extra.y || {}) }
+  };
+}
+
+/* ---------- views ---------- */
+const views = {};
+const built = {};
+
+views.overview = {
+  build(el) {
+    const k = D.kpis, yrs = Object.keys(k.revenue_by_year).sort(), last = yrs[yrs.length - 1], prev = yrs[yrs.length - 2];
+    const tiles = [
+      [`Net revenue ${last}`, money(k.revenue_by_year[last]), `${spct(k.yoy_growth_last_year)} vs ${prev}`, "up"],
+      ["Net revenue, 3 years", money(k.net_revenue), `${int(k.orders)} orders`],
+      ["Gross margin", pct(k.gross_margin), `${money(k.gross_profit)} gross profit`],
+      ["Average order", money(k.avg_order_value, 2), `Top 20% of customers = ${pct(D.concentration.top20_share, 0)} of revenue`],
+      ["Active customers", int(k.active_customers_365d), "Ordered in the last 365 days"],
+      ["Lost to returns", money(k.revenue_lost_to_returns), `${pct(k.return_rate_revenue)} of gross revenue`],
+    ];
+    const recs = D.recommendations.map((r, i) => `
+      <div class="rec">
+        <div class="rk">${i + 1}</div>
+        <div><div class="t">${esc(r.title)}</div>
+          <div class="meta">${pill(r.area, "area")}<span>Owner: ${esc(r.owner)}</span></div></div>
+        <div class="impact">${esc(r.impact)}</div>
+        <p class="detail">${esc(r.detail)}</p>
+      </div>`).join("");
+    const catMax = Math.max(...D.category.map(c => c.net));
+    const catRows = [...D.category].sort((a, b) => b.net - a.net).map(c => `
+      <tr><td><span class="pill area" style="border:0;padding-left:0"><i style="background:${catColor(c.category)}"></i>${esc(c.category)}</span></td>
+      <td><div class="bar-cell"><div class="bar" style="width:${(c.net / catMax * 100).toFixed(1)}%"></div><span class="num">${money(c.net)}</span></div></td>
+      <td class="n">${pct(c.margin)}</td><td class="n">${money(c.disc)}</td></tr>`).join("");
+    el.innerHTML = `
+      <div class="view-head"><span class="eyebrow-s">${esc(D.meta.start)} to ${esc(D.meta.end)}</span>
+        <h2>How the business is doing, and what to do next</h2>
+        <p class="lede">Every figure on this page comes from the models in the pipeline. Actions are ranked by the gross profit they are expected to move.</p></div>
+      <div class="tiles">${tiles.map(t => `<div class="tile"><span class="k">${t[0]}</span><span class="v">${t[1]}</span><span class="d ${t[3] || ""}">${t[2]}</span></div>`).join("")}</div>
+      <section class="panel"><div class="panel-head"><h3>Recommended actions</h3><span class="sub">Ranked by quantified impact; owner in each row</span></div>
+        <div class="recs">${recs}</div></section>
+      <div class="grid-2">
+        <section class="panel"><div class="panel-head"><h3>Monthly net revenue</h3><span class="sub">${last} highlighted against earlier years</span></div>
+          <div class="chart"><canvas id="c-monthly" aria-label="Monthly net revenue by year"></canvas></div></section>
+        <section class="panel"><div class="panel-head"><h3>Channel mix by quarter</h3><span class="sub">Share of net revenue</span></div>
+          <div class="chart"><canvas id="c-mix" aria-label="Channel mix by quarter"></canvas></div></section>
+      </div>
+      <section class="panel"><div class="panel-head"><h3>Category performance</h3><span class="sub">Three-year totals</span></div>
+        <div class="tbl-wrap"><table><thead><tr><th>Category</th><th>Net revenue</th><th class="n">Gross margin</th><th class="n">Discounts given</th></tr></thead>
+        <tbody>${catRows}</tbody></table></div></section>`;
+  },
+  draw() {
+    const byYear = {};
+    D.monthly.forEach(([m, v]) => { const [y, mo] = m.split("-"); (byYear[y] ||= Array(12).fill(null))[+mo - 1] = v; });
+    const yrs = Object.keys(byYear).sort();
+    mk("c-monthly", {
+      type: "line",
+      data: { labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+        datasets: yrs.map((y, i) => {
+          const latest = i === yrs.length - 1;
+          return { label: y, data: byYear[y], borderColor: latest ? css("--s1") : css("--neutral"), backgroundColor: latest ? css("--s1") : css("--neutral"),
+            borderWidth: latest ? 2.5 : 1.6, pointRadius: latest ? 3 : 0, pointHoverRadius: 5, tension: 0.25 };
+        }) },
+      options: { responsive: true, maintainAspectRatio: false, interaction: { mode: "index", intersect: false },
+        scales: axes(moneyTick, { y: { beginAtZero: true } }),
+        plugins: { tooltip: { callbacks: { label: c => ` ${c.dataset.label}: ${money(c.parsed.y)}` } } } }
+    });
+    const chCol = { "In-Store": css("--s1"), "Online": css("--s2"), "Mobile App": css("--s3") };
+    mk("c-mix", {
+      type: "bar",
+      data: { labels: D.channel_mix.quarters, datasets: Object.entries(D.channel_mix.series).map(([ch, v]) => ({
+        label: ch, data: v, backgroundColor: chCol[ch], borderColor: css("--surface"), borderWidth: { top: 2 }, borderSkipped: false, barPercentage: 0.82 })) },
+      options: { responsive: true, maintainAspectRatio: false, interaction: { mode: "index", intersect: false },
+        scales: { x: { stacked: true, grid: { display: false }, ticks: { maxRotation: 0, autoSkipPadding: 10 } },
+          y: { stacked: true, max: 1, grid: { color: css("--line") }, border: { display: false }, ticks: { callback: pctTick } } },
+        plugins: { tooltip: { callbacks: { label: c => ` ${c.dataset.label}: ${pct(c.parsed.y)}` } } } }
+    });
+  }
+};
+
+let fcCat = "All categories";
+views.forecast = {
+  build(el) {
+    const F = D.forecast, t = F.total;
+    const prod = F.metrics.find(m => m.method === F.production_method), base = F.metrics.find(m => m.method.startsWith("Seasonal"));
+    const rows = [...F.by_category].sort((a, b) => b.expected_growth - a.expected_growth).map(c => `
+      <tr><td><span class="pill area" style="border:0;padding-left:0"><i style="background:${catColor(c.category)}"></i>${esc(c.category)}</span></td>
+      <td class="n">${money(c.p50)}</td><td class="n">${money(c.p10)} to ${money(c.p90)}</td><td class="n">${money(c.same_weeks_last_year)}</td>
+      <td class="n">${spct(c.expected_growth)}</td></tr>`).join("");
+    const mrows = F.metrics.map(m => `<tr class="${m.method === F.production_method ? "hl" : ""}"><td>${esc(m.method)}${m.method === F.production_method ? " &nbsp;" + pill("In production", "good") : ""}</td>
+      <td class="n">${pct(m.wape_category_week)}</td><td class="n">${pct(m.wape_total_week)}</td><td class="n">${spct(m.bias)}</td></tr>`).join("");
+    el.innerHTML = `
+      <div class="view-head"><span class="eyebrow-s">Next 13 weeks</span><h2>Demand forecast</h2>
+        <p class="lede">Weekly net revenue by category. The model was picked by four rolling backtests over the last year and is ${pct(1 - prod.wape_category_week / base.wape_category_week, 0)} more accurate than last-year-plus-growth.</p></div>
+      <div class="tiles">
+        <div class="tile"><span class="k">Next quarter, median</span><span class="v">${money(t.p50)}</span><span class="d up">${spct(t.growth)} vs same weeks last year</span></div>
+        <div class="tile"><span class="k">80% range</span><span class="v">${money(t.p10)} to ${money(t.p90)}</span><span class="d">From backtest errors by horizon</span></div>
+        <div class="tile"><span class="k">Weekly error (WAPE)</span><span class="v">${pct(prod.wape_category_week)}</span><span class="d">Baseline ${pct(base.wape_category_week)}</span></div>
+        <div class="tile"><span class="k">Incident weeks repaired</span><span class="v">${F.repaired.length}</span><span class="d">Stock-outs are not treated as seasonality</span></div>
+      </div>
+      <section class="panel">
+        <div class="panel-head"><h3>Last 52 weeks and the forecast</h3><span class="sub">Shaded band: 80% interval</span></div>
+        <div class="chips" id="fc-chips" role="group" aria-label="Category">${["All categories", ...CATS].map(c => `<button class="chip" aria-pressed="${c === fcCat}" data-c="${esc(c)}">${c === "All categories" ? "" : `<span class="sw" style="background:${catColor(c)}"></span>`}${esc(c)}</button>`).join("")}</div>
+        <div class="chart tall"><canvas id="c-fc" aria-label="Forecast chart"></canvas></div>
+        <p class="note" id="fc-note"></p>
+      </section>
+      <div class="grid-3-2">
+        <section class="panel"><div class="panel-head"><h3>By category</h3><span class="sub">Growth vs the same weeks last year, incidents repaired</span></div>
+          <div class="tbl-wrap"><table><thead><tr><th>Category</th><th class="n">Forecast</th><th class="n">80% range</th><th class="n">Last year</th><th class="n">Growth</th></tr></thead><tbody>${rows}</tbody></table></div></section>
+        <section class="panel"><div class="panel-head"><h3>Backtest accuracy</h3></div>
+          <div class="tbl-wrap"><table><thead><tr><th>Method</th><th class="n">WAPE, category</th><th class="n">WAPE, total</th><th class="n">Bias</th></tr></thead><tbody>${mrows}</tbody></table></div>
+          <p class="note">WAPE = total absolute error / total actual revenue. Lower is better.</p></section>
+      </div>`;
+    $("#fc-chips").addEventListener("click", e => {
+      const b = e.target.closest(".chip"); if (!b) return;
+      fcCat = b.dataset.c;
+      document.querySelectorAll("#fc-chips .chip").forEach(x => x.setAttribute("aria-pressed", x.dataset.c === fcCat));
+      views.forecast.draw();
+    });
+  },
+  draw() {
+    const F = D.forecast, cats = fcCat === "All categories" ? CATS : [fcCat];
+    const weeks = F.history[CATS[0]].map(r => r[0]);
+    const hist = weeks.map((w, i) => cats.reduce((s, c) => s + F.history[c][i][1], 0));
+    const fw = [...new Set(F.future.map(r => r.week_start))].sort();
+    const agg = k => fw.map(w => F.future.filter(r => r.week_start === w && cats.includes(r.category)).reduce((s, r) => s + r[k], 0));
+    const p10 = agg("p10"), p50 = agg("p50"), p90 = agg("p90");
+    const labels = [...weeks, ...fw];
+    const pad = n => Array(n).fill(null);
+    const col = fcCat === "All categories" ? css("--s1") : catColor(fcCat);
+    mk("c-fc", {
+      type: "line",
+      data: { labels, datasets: [
+        { label: "Actual", data: [...hist, ...pad(fw.length)], borderColor: css("--ink-2"), borderWidth: 1.6, pointRadius: 0, tension: 0.2 },
+        { label: "80% low", data: [...pad(weeks.length), ...p10], borderColor: "transparent", pointRadius: 0, fill: false },
+        { label: "80% interval", data: [...pad(weeks.length), ...p90], borderColor: "transparent", backgroundColor: alpha(col, 0.18), pointRadius: 0, fill: "-1" },
+        { label: "Forecast", data: [...pad(weeks.length - 1), hist[hist.length - 1], ...p50], borderColor: col, borderWidth: 2.6, pointRadius: 0, tension: 0.2 },
+      ] },
+      options: { responsive: true, maintainAspectRatio: false, interaction: { mode: "index", intersect: false },
+        scales: axes(moneyTick, { y: { beginAtZero: true }, x: { ticks: { maxRotation: 0, autoSkipPadding: 24, callback(v) { return this.getLabelForValue(v).slice(0, 7); } } } }),
+        plugins: { legend: { labels: { filter: i => i.text !== "80% low" } },
+          tooltip: { filter: i => i.dataset.label !== "80% low" && i.parsed.y !== null, callbacks: { title: i => "Week of " + i[0].label, label: c => ` ${c.dataset.label === "80% interval" ? "80% high" : c.dataset.label}: ${money(c.parsed.y)}` } } } }
+    });
+    const tot = p50.reduce((a, b) => a + b, 0);
+    $("#fc-note").textContent = `${fcCat}: ${money(tot)} forecast over ${fw.length} weeks starting ${fw[0]}.` +
+      (fcCat === "All categories" ? " The all-categories band adds the category bands, so it is slightly wider than a joint interval." : "");
+  }
+};
+
+let selCustomer = null;
+views.customers = {
+  build(el) {
+    const S = D.segments;
+    const rows = S.map(s => `<tr><td><strong>${esc(s.segment)}</strong></td><td class="n">${int(s.customers)}</td>
+      <td class="n">${pct(s.revenue_share, 0)}</td><td class="n">${Math.round(s.median_orders)}</td><td class="n">${Math.round(s.median_recency_days)} d</td>
+      <td class="n">${pct(s.discount_share, 0)}</td><td style="min-width:260px">${esc(s.action)}</td></tr>`).join("");
+    const Q = Object.fromEntries(D.clv.value_risk.map(q => [q.value_risk_action, q]));
+    const qmeta = [["Protect", "crit", "High value, elevated risk. Personal outreach."], ["Grow & reward", "good", "High value, low risk. Reward and cross-sell."],
+      ["Automate win-back", "warn", "Lower value, high risk. Automated offers only."], ["Maintain", "", "Lower value, lower risk. Business as usual."]];
+    const C = D.customers, idx = Object.fromEntries(C.columns.map((c, i) => [c, i]));
+    const top = [...C.rows].sort((a, b) => b[idx.expected_profit_loss] - a[idx.expected_profit_loss]).slice(0, 12);
+    selCustomer = top[0];
+    el.innerHTML = `
+      <div class="view-head"><span class="eyebrow-s">${int(C.rows.length)} active customers</span><h2>Customers</h2>
+        <p class="lede">Behavioural segments, predicted 180-day value (CLV) and churn risk, combined into one action per customer.</p></div>
+      <div class="grid-3-2">
+        <section class="panel"><div class="panel-head"><h3>Segments</h3><span class="sub">K-Means on recency, frequency, spend, discount use, breadth and tenure</span></div>
+          <div class="tbl-wrap"><table><thead><tr><th>Segment</th><th class="n">Customers</th><th class="n">Revenue share</th><th class="n">Median orders</th><th class="n">Since last order</th><th class="n">Bought on discount</th><th>Playbook</th></tr></thead><tbody>${rows}</tbody></table></div></section>
+        <section class="panel"><div class="panel-head"><h3>Who drives revenue</h3></div>
+          <div class="chart"><canvas id="c-seg" aria-label="Customer share versus revenue share by segment"></canvas></div></section>
+      </div>
+      <section class="panel"><div class="panel-head"><h3>Value x risk</h3><span class="sub">High value = top quarter of predicted CLV. Elevated risk = churn probability of 30% or more.</span></div>
+        <div class="quad">${qmeta.map(([k, kind, d]) => Q[k] ? `<div class="tile">${pill(k, kind)}<span class="v">${int(Q[k].customers)}</span>
+          <span class="d">${pct(Q[k].clv_share, 0)} of predicted value · avg risk ${pct(Q[k].avg_churn_prob, 0)}</span><span class="d">${d}</span></div>` : "").join("")}</div></section>
+      <div class="grid-2">
+        <section class="panel"><div class="panel-head"><h3>Look up a customer</h3></div>
+          <input type="search" id="cust-q" placeholder="Type a customer ID, e.g. C00123" autocomplete="off" aria-label="Customer ID">
+          <div class="suggest" id="cust-sug"></div>
+          <div id="cust-card"></div></section>
+        <section class="panel"><div class="panel-head"><h3>Call list: most profit at risk</h3><span class="sub">Churn probability x margin at stake</span></div>
+          <div class="tbl-wrap"><table><thead><tr><th>Customer</th><th>Segment</th><th class="n">Risk</th><th class="n">Spend 12m</th><th class="n">At stake</th></tr></thead>
+          <tbody id="call-list">${top.map(r => `<tr><td><button class="chip mono" data-id="${r[0]}">${r[0]}</button></td><td>${esc(r[idx.segment])}</td>
+            <td class="n">${pct(r[idx.churn_probability], 0)}</td><td class="n">${money(r[idx.revenue_365d])}</td><td class="n">${money(r[idx.expected_profit_loss])}</td></tr>`).join("")}</tbody></table></div></section>
+      </div>`;
+    const showCard = row => {
+      selCustomer = row;
+      const r = Object.fromEntries(C.columns.map((c, i) => [c, row[i]]));
+      const kind = { "Protect": "crit", "Grow & reward": "good", "Automate win-back": "warn" }[r.value_risk_action] || "";
+      $("#cust-card").innerHTML = `<div style="display:grid;gap:12px">
+        <div class="panel-head"><h3 class="mono" style="font-family:var(--font-data)">${esc(r.customer_id)}</h3><div class="chips">${pill(r.value_risk_action, kind)}${r.target_for_retention ? pill("On retention list", "serious") : ""}</div></div>
+        <div class="cust-card readout">
+          <div><span class="k">Segment</span><span class="v" style="font-family:var(--font-body);font-size:0.95rem">${esc(r.segment)}</span></div>
+          <div><span class="k">Churn risk, 120 days</span><span class="v">${pct(r.churn_probability, 0)}</span><div class="meter"><span style="width:${(r.churn_probability * 100).toFixed(0)}%"></span></div></div>
+          <div><span class="k">Predicted spend, 180 days</span><span class="v">${money(r.predicted_clv_180d)}</span></div>
+          <div><span class="k">Spend, last 12 months</span><span class="v">${money(r.revenue_365d)}</span></div>
+          <div><span class="k">Orders to date</span><span class="v">${r.frequency}</span></div>
+          <div><span class="k">Days since last order</span><span class="v">${r.recency_days}</span></div>
+        </div></div>`;
+    };
+    const byId = Object.fromEntries(C.rows.map(r => [r[0], r]));
+    $("#cust-q").addEventListener("input", e => {
+      const q = e.target.value.trim().toUpperCase();
+      const hits = q ? C.rows.filter(r => r[0].includes(q)).slice(0, 8) : [];
+      $("#cust-sug").innerHTML = hits.map(r => `<button class="chip mono" data-id="${r[0]}">${r[0]}</button>`).join("") ||
+        (q ? `<span class="note">No active customer matches “${esc(q)}”. Lapsed customers are not scored.</span>` : "");
+      if (byId[q]) showCard(byId[q]);
+    });
+    el.addEventListener("click", e => { const b = e.target.closest("button[data-id]"); if (b && byId[b.dataset.id]) showCard(byId[b.dataset.id]); });
+    showCard(selCustomer);
+  },
+  draw() {
+    const S = D.segments;
+    mk("c-seg", {
+      type: "bar",
+      data: { labels: S.map(s => s.segment), datasets: [
+        { label: "Share of customers", data: S.map(s => s.customer_share), backgroundColor: css("--neutral"), borderRadius: { topRight: 4, bottomRight: 4 }, borderSkipped: "start" },
+        { label: "Share of revenue", data: S.map(s => s.revenue_share), backgroundColor: css("--s1"), borderRadius: { topRight: 4, bottomRight: 4 }, borderSkipped: "start" }] },
+      options: { indexAxis: "y", responsive: true, maintainAspectRatio: false,
+        scales: { x: { grid: { color: css("--line") }, border: { display: false }, ticks: { callback: pctTick } }, y: { grid: { display: false } } },
+        plugins: { tooltip: { callbacks: { label: c => ` ${c.dataset.label}: ${pct(c.parsed.x)}` } } } }
+    });
+  }
+};
+
+views.retention = {
+  build(el) {
+    const C = D.churn, imp = D.churn_importance, mx = Math.max(...imp.map(i => i.auc_drop));
+    const segRows = C.by_segment.map(s => `<tr><td>${esc(s.segment)}</td><td class="n">${int(s.customers)}</td><td class="n">${pct(s.avg_churn_prob, 0)}</td><td class="n">${money(s.revenue_at_risk)}</td></tr>`).join("");
+    const lb = C.leaderboard.map(m => `<tr class="${m.model === C.best_model ? "hl" : ""}"><td>${esc(m.model)}</td><td class="n">${m.cv_roc_auc.toFixed(3)}</td><td class="n">${m.test_roc_auc.toFixed(3)}</td><td class="n">${m.test_pr_auc.toFixed(3)}</td></tr>`).join("");
+    el.innerHTML = `
+      <div class="view-head"><span class="eyebrow-s">Next ${C.horizon_days} days</span><h2>Churn risk and retention budget</h2>
+        <p class="lede">A customer churns if they place no order in the next ${C.horizon_days} days. Models were trained on earlier snapshots and tested on a later one they never saw.</p></div>
+      <div class="tiles">
+        <div class="tile"><span class="k">High-risk active customers</span><span class="v">${int(C.high_risk_customers_now)}</span><span class="d">of ${int(C.active_customers_now)} active, risk above 60%</span></div>
+        <div class="tile"><span class="k">Revenue at risk</span><span class="v">${money(C.revenue_at_risk_now)}</span><span class="d">Risk-weighted, next ${C.horizon_days} days</span></div>
+        <div class="tile"><span class="k">Out-of-time ROC-AUC</span><span class="v">${C.test_roc_auc.toFixed(3)}</span><span class="d">${esc(C.best_model)}</span></div>
+        <div class="tile"><span class="k">Top-decile lift</span><span class="v">${C.top_decile_lift.toFixed(2)}x</span><span class="d">vs base churn rate of ${pct(C.base_churn_rate_test, 0)}</span></div>
+      </div>
+      <section class="panel"><div class="panel-head"><h3>Retention budget simulator</h3><span class="sub">Replays the campaign on the held-out test snapshot</span></div>
+        <div class="grid-3-2">
+          <div class="chart"><canvas id="c-ret" aria-label="Net profit by share of customers contacted"></canvas></div>
+          <div class="controls">
+            <div class="ctl"><label for="r-cost">Offer cost per customer contacted <output id="o-cost"></output></label><input id="r-cost" type="range" min="1" max="30" step="1" value="${D.retention_sim.default_cost}"></div>
+            <div class="ctl"><label for="r-succ">Share of churners the offer saves <output id="o-succ"></output></label><input id="r-succ" type="range" min="5" max="60" step="1" value="${Math.round(D.retention_sim.default_success * 100)}"></div>
+            <div class="readout" id="r-out"></div>
+            <p class="note">Customers are ranked by churn probability x margin at stake. Saved margin = churners contacted x save rate x their margin over the horizon.</p>
+          </div>
+        </div></section>
+      <div class="grid-2">
+        <section class="panel"><div class="panel-head"><h3>What predicts churn</h3><span class="sub">Drop in ROC-AUC when the feature is shuffled</span></div>
+          <div class="tbl-wrap"><table><tbody>${imp.map(i => `<tr><td>${esc(fname(i.feature))}</td><td style="width:45%"><div class="bar-cell"><div class="bar" style="width:${(Math.max(i.auc_drop, 0) / mx * 100).toFixed(1)}%"></div><span class="num">${i.auc_drop.toFixed(3)}</span></div></td></tr>`).join("")}</tbody></table></div></section>
+        <section class="panel"><div class="panel-head"><h3>Risk by segment</h3></div>
+          <div class="tbl-wrap"><table><thead><tr><th>Segment</th><th class="n">Active</th><th class="n">Avg risk</th><th class="n">Revenue at risk</th></tr></thead><tbody>${segRows}</tbody></table></div>
+          <h3 style="margin-top:8px">Model comparison</h3>
+          <div class="tbl-wrap"><table><thead><tr><th>Model</th><th class="n">CV AUC</th><th class="n">Test AUC</th><th class="n">Test PR-AUC</th></tr></thead><tbody>${lb}</tbody></table></div></section>
+      </div>`;
+    ["r-cost", "r-succ"].forEach(id => $("#" + id).addEventListener("input", () => views.retention.draw()));
+  },
+  draw() {
+    const rows = D.retention_sim.rows;
+    const order = views.retention._order ||= rows.map((r, i) => i).sort((a, b) => rows[b][0] * rows[b][1] - rows[a][0] * rows[a][1]);
+    const cost = +$("#r-cost").value, succ = +$("#r-succ").value / 100;
+    $("#o-cost").textContent = "$" + cost; $("#o-succ").textContent = succ * 100 + "%";
+    let cum = 0, best = -Infinity, bestK = 0; const net = [];
+    order.forEach((i, k) => { cum += rows[i][2] * succ * rows[i][1]; const v = cum - cost * (k + 1); net.push(v); if (v > best) { best = v; bestK = k; } });
+    const n = net.length, step = Math.max(1, Math.floor(n / 200)), pts = [];
+    for (let k = 0; k < n; k += step) pts.push({ x: (k + 1) / n, y: net[k] });
+    pts.push({ x: 1, y: net[n - 1] });
+    const share = (bestK + 1) / n;
+    $("#r-out").innerHTML = `
+      <div><span class="k">Best contact depth</span><span class="v">${best > 0 ? pct(share, 0) : "Nobody"}</span></div>
+      <div><span class="k">Customers to contact today</span><span class="v">${best > 0 ? int(share * D.churn.active_customers_now) : 0}</span></div>
+      <div><span class="k">Net profit, test campaign</span><span class="v">${money(Math.max(best, 0))}</span></div>
+      <div><span class="k">If you contact everyone</span><span class="v">${money(net[n - 1])}</span></div>`;
+    mk("c-ret", {
+      type: "line",
+      data: { datasets: [
+        { label: "Net profit", data: pts, borderColor: css("--s1"), backgroundColor: css("--s1"), borderWidth: 2.2, pointRadius: 0, tension: 0.1 },
+        { label: "Best depth", data: best > 0 ? [{ x: share, y: best }] : [], type: "scatter", pointRadius: 6, pointBackgroundColor: css("--s1"), pointBorderColor: css("--surface"), pointBorderWidth: 2 }] },
+      options: { responsive: true, maintainAspectRatio: false, parsing: false, animation: false,
+        scales: { x: { type: "linear", min: 0, max: 1, grid: { display: false }, ticks: { callback: pctTick }, title: { display: true, text: "Share of active customers contacted" } },
+          y: { grid: { color: c => c.tick.value === 0 ? css("--muted") : css("--line") }, border: { display: false }, ticks: { callback: moneyTick } } },
+        plugins: { legend: { display: false }, tooltip: { callbacks: { title: i => "Contact top " + pct(i[0].parsed.x, 0), label: c => " Net profit: " + money(c.parsed.y) } } } }
+    });
+  }
+};
+
+views.pricing = {
+  build(el) {
+    const P = D.pricing, E = D.elasticity;
+    const lo = -3, hi = 0, pos = v => ((Math.min(Math.max(v, lo), hi) - lo) / (hi - lo) * 100).toFixed(2) + "%";
+    const erows = [...E].sort((a, b) => a.elasticity - b.elasticity).map(e => `<tr><td>${esc(e.category)}</td>
+      <td class="n">${e.elasticity.toFixed(2)}</td><td class="n">${e.ci_low.toFixed(2)} to ${e.ci_high.toFixed(2)}</td>
+      <td><div class="range-cell"><div class="axis"></div><div class="unit" style="left:${pos(-1)}"></div>
+        <div class="ci" style="left:${pos(e.ci_low)};width:calc(${pos(e.ci_high)} - ${pos(e.ci_low)})"></div>
+        ${e.true_elasticity_simulated != null ? `<div class="truth" style="left:${pos(e.true_elasticity_simulated)}" title="Simulation truth ${e.true_elasticity_simulated}"></div>` : ""}
+        <div class="pt" style="left:${pos(e.elasticity)}"></div></div></td>
+      <td>${e.elasticity < -1 ? pill("Elastic", "") : pill("Inelastic", "")}</td></tr>`).join("");
+    const byCat = {};
+    P.products.forEach(p => (byCat[p.category] ||= []).push(p));
+    const opts = CATS.filter(c => byCat[c]).map(c => `<optgroup label="${esc(c)}">${byCat[c].sort((a, b) => a.product_name.localeCompare(b.product_name)).map(p => `<option value="${p.product_id}">${esc(p.product_name)}</option>`).join("")}</optgroup>`).join("");
+    const first = [...P.products].sort((a, b) => b.annual_profit_uplift - a.annual_profit_uplift)[0];
+    const top = [...P.products].sort((a, b) => b.annual_profit_uplift - a.annual_profit_uplift).slice(0, 10);
+    const catRows = [...P.by_category].sort((a, b) => b.annual_profit_uplift - a.annual_profit_uplift).map(c => `<tr><td>${esc(c.category)}</td><td class="n">${c.raise}</td><td class="n">${c.lower}</td>
+      <td class="n">${spct(c.avg_price_change)}</td><td class="n">${spct(c.revenue_change_pct)}</td><td class="n">${money(c.annual_profit_uplift)}</td></tr>`).join("");
+    el.innerHTML = `
+      <div class="view-head"><span class="eyebrow-s">Price elasticity</span><h2>Pricing</h2>
+        <p class="lede">How much demand moves when a product's price moves, measured from list-price changes with product and week fixed effects. Recommendations stay within ${pct(P.guardrail, 0)} of today's price.</p></div>
+      <div class="tiles">
+        <div class="tile"><span class="k">Gross profit uplift, per year</span><span class="v">${money(P.total_uplift)}</span><span class="d up">From repricing ${P.products.length} products</span></div>
+        <div class="tile"><span class="k">Elasticity estimates vs truth</span><span class="v">${D.quality.elasticity_mae.toFixed(2)}</span><span class="d">Mean absolute error vs the simulator</span></div>
+      </div>
+      <section class="panel"><div class="panel-head"><h3>Price simulator</h3><span class="sub">Constant-elasticity demand, weekly volume from the last 12 weeks</span></div>
+        <div class="grid-3-2">
+          <div class="chart"><canvas id="c-price" aria-label="Annual profit change by price change"></canvas></div>
+          <div class="controls">
+            <div class="ctl"><label for="p-prod">Product</label><select id="p-prod">${opts}</select></div>
+            <div class="ctl"><label for="p-chg">Price change <output id="o-chg"></output></label><input id="p-chg" type="range" min="-20" max="20" step="1" value="0"></div>
+            <div class="chips"><button class="btn chip" id="p-rec">Use recommended price</button><button class="btn chip" id="p-reset">Back to current price</button></div>
+            <div class="readout" id="p-out"></div>
+          </div>
+        </div></section>
+      <div class="grid-2">
+        <section class="panel"><div class="panel-head"><h3>Elasticity by category</h3></div>
+          <div class="legend-row"><span><b style="background:var(--s1);height:10px;width:10px;border-radius:50%"></b>Estimate</span><span><b style="background:var(--s1);opacity:.35"></b>95% interval</span><span><b style="background:var(--ink);width:2px;height:12px"></b>Simulation truth</span><span><b style="background:var(--muted);width:1px;height:12px"></b>-1 (unit elastic)</span></div>
+          <div class="tbl-wrap"><table><thead><tr><th>Category</th><th class="n">Estimate</th><th class="n">95% CI</th><th>Scale -3 to 0</th><th></th></tr></thead><tbody>${erows}</tbody></table></div></section>
+        <section class="panel"><div class="panel-head"><h3>Impact by category</h3></div>
+          <div class="tbl-wrap"><table><thead><tr><th>Category</th><th class="n">Raise</th><th class="n">Lower</th><th class="n">Avg change</th><th class="n">Revenue</th><th class="n">Profit / yr</th></tr></thead><tbody>${catRows}</tbody></table></div>
+          <h3 style="margin-top:8px">Biggest single-product wins</h3>
+          <div class="tbl-wrap"><table><thead><tr><th>Product</th><th class="n">Now</th><th class="n">Recommended</th><th class="n">Profit / yr</th></tr></thead>
+          <tbody>${top.map(p => `<tr><td>${esc(p.product_name)}</td><td class="n">$${p.current_list_price.toFixed(2)}</td><td class="n">$${p.recommended_price.toFixed(2)}</td><td class="n">${money(p.annual_profit_uplift)}</td></tr>`).join("")}</tbody></table></div></section>
+      </div>`;
+    $("#p-prod").value = first.product_id;
+    const setRec = () => { const p = views.pricing.prod(); $("#p-chg").value = Math.round(p.price_change_pct * 100); views.pricing.draw(); };
+    $("#p-prod").addEventListener("change", setRec);
+    $("#p-chg").addEventListener("input", () => views.pricing.draw());
+    $("#p-rec").addEventListener("click", setRec);
+    $("#p-reset").addEventListener("click", () => { $("#p-chg").value = 0; views.pricing.draw(); });
+    $("#p-chg").value = Math.round(first.price_change_pct * 100);
+  },
+  prod() { return D.pricing.products.find(p => p.product_id === $("#p-prod").value); },
+  draw() {
+    const p = views.pricing.prod(), chg = +$("#p-chg").value / 100;
+    $("#o-chg").textContent = spct(chg, 0);
+    const p0 = p.current_list_price, c = p.unit_cost, e = p.elasticity, q0 = p.weekly_units;
+    const at = r => { const p1 = p0 * (1 + r), q1 = q0 * Math.pow(1 + r, e); return { p1, q1, rev: p1 * q1, gp: (p1 - c) * q1 }; };
+    const now = at(0), s = at(chg);
+    $("#p-out").innerHTML = `
+      <div><span class="k">Price</span><span class="v">$${s.p1.toFixed(2)}</span></div>
+      <div><span class="k">Units per week</span><span class="v">${s.q1.toFixed(1)} <span class="note">(${spct(s.q1 / Math.max(now.q1, 1e-9) - 1, 0)})</span></span></div>
+      <div><span class="k">Margin per unit</span><span class="v">${pct(1 - c / s.p1, 0)}</span></div>
+      <div><span class="k">Gross profit change / yr</span><span class="v">${money((s.gp - now.gp) * 52)}</span></div>`;
+    const xs = []; for (let r = -20; r <= 20; r++) xs.push(r / 100);
+    mk("c-price", {
+      type: "line",
+      data: { datasets: [
+        { label: "Annual gross profit change", data: xs.map(r => ({ x: r, y: (at(r).gp - now.gp) * 52 })), borderColor: catColor(p.category), borderWidth: 2.2, pointRadius: 0 },
+        { label: "Recommended", type: "scatter", data: [{ x: p.price_change_pct, y: (at(p.price_change_pct).gp - now.gp) * 52 }], pointStyle: "rectRot", pointRadius: 7, pointBackgroundColor: css("--ink"), pointBorderColor: css("--surface"), pointBorderWidth: 2 },
+        { label: "Selected", type: "scatter", data: [{ x: chg, y: (s.gp - now.gp) * 52 }], pointRadius: 7, pointBackgroundColor: catColor(p.category), pointBorderColor: css("--surface"), pointBorderWidth: 2 }] },
+      options: { responsive: true, maintainAspectRatio: false, parsing: false, animation: false,
+        scales: { x: { type: "linear", min: -0.2, max: 0.2, grid: { color: c => Math.abs(Math.abs(c.tick.value) - D.pricing.guardrail) < 1e-9 ? css("--muted") : "transparent" }, ticks: { callback: v => spct(v, 0), stepSize: 0.05 }, title: { display: true, text: `Price change (rules at the ±${pct(D.pricing.guardrail, 0)} guardrail)` } },
+          y: { grid: { color: c => c.tick.value === 0 ? css("--muted") : css("--line") }, border: { display: false }, ticks: { callback: moneyTick } } },
+        plugins: { tooltip: { callbacks: { title: i => "Price " + spct(i[0].parsed.x, 0), label: c => ` ${c.dataset.label}: ${money(c.parsed.y)}` } } } }
+    });
+  }
+};
+
+views.basket = {
+  build(el) {
+    const B = D.basket, mx = Math.max(...B.bundles.map(b => b.lift));
+    const L = {}; B.lift.forEach(r => (L[r.antecedent] ||= {})[r.consequent] = r.lift);
+    const lmax = Math.max(...B.lift.filter(r => r.antecedent !== r.consequent).map(r => Math.abs(Math.log2(r.lift))));
+    const short = c => c.split(" ")[0].replace("&", "");
+    let heat = `<div class="h"></div>` + CATS.map(c => `<div class="h">${esc(short(c))}</div>`).join("");
+    CATS.forEach(a => {
+      heat += `<div class="h rh">${esc(a)}</div>`;
+      CATS.forEach(b => {
+        if (a === b || !L[a] || L[a][b] == null) { heat += `<div class="c" style="background:var(--surface-2)">·</div>`; return; }
+        const v = Math.log2(L[a][b]), w = Math.round(Math.min(Math.abs(v) / lmax, 1) * 85);
+        heat += `<div class="c" title="${esc(a)} → ${esc(b)}: lift ${L[a][b].toFixed(2)}" style="background:color-mix(in oklab, var(${v >= 0 ? "--div-pos" : "--div-neg"}) ${w}%, var(--div-mid))">${L[a][b].toFixed(2)}</div>`;
+      });
+    });
+    el.innerHTML = `
+      <div class="view-head"><span class="eyebrow-s">Market basket</span><h2>What sells together</h2>
+        <p class="lede">Association rules over every order. Lift tells how many times more often two products appear together than chance would predict.</p></div>
+      <div class="tiles">
+        <div class="tile"><span class="k">Orders with 2+ products</span><span class="v">${pct(B.multi_share, 0)}</span><span class="d">Room for bundles and add-ons</span></div>
+        <div class="tile"><span class="k">Average order, all</span><span class="v">${money(B.aov, 2)}</span><span class="d">Orders with a top bundle: ${money(B.bundles[0].avg_order_value_with_bundle)}</span></div>
+        <div class="tile"><span class="k">Planted pairs recovered</span><span class="v">${B && D.quality.basket_recovered ? D.quality.basket_recovered.found + " / " + D.quality.basket_recovered.total : "n/a"}</span><span class="d">Validation against the simulator</span></div>
+      </div>
+      <section class="panel"><div class="panel-head"><h3>Bundle candidates</h3><span class="sub">Attach = share of orders with the first item that also have the second</span></div>
+        <div class="tbl-wrap"><table><thead><tr><th>Pair</th><th>Categories</th><th class="n">Orders together</th><th>Lift</th><th class="n">Attach</th><th class="n">Order value with pair</th></tr></thead>
+        <tbody>${B.bundles.map(b => `<tr><td><strong>${esc(b.bundle)}</strong></td><td>${esc(b.categories)}</td><td class="n">${int(b.orders_together)}</td>
+          <td><div class="bar-cell"><div class="bar" style="width:${(b.lift / mx * 100).toFixed(1)}%"></div><span class="num">${b.lift.toFixed(1)}x</span></div></td>
+          <td class="n">${pct(b.confidence, 0)}</td><td class="n">${money(b.avg_order_value_with_bundle)}</td></tr>`).join("")}</tbody></table></div></section>
+      <section class="panel"><div class="panel-head"><h3>Category cross-shopping</h3><span class="sub">Red: bought together more than chance. Blue: less. Grey: independent.</span></div>
+        <div class="tbl-wrap"><div class="heat" style="grid-template-columns: 150px repeat(${CATS.length}, minmax(52px, 1fr)); min-width: 620px">${heat}</div></div></section>`;
+  },
+  draw() {}
+};
+
+views.promotions = {
+  build(el) {
+    const P = D.promotions;
+    const vk = v => v === "Scale" ? "good" : v === "Optimise" ? "warn" : "crit";
+    const rows = [...P.summary].sort((a, b) => b.roi - a.roi).map(s => `<tr><td><strong>${esc(s.promo_name)}</strong></td><td>${esc(s.scope)}</td>
+      <td class="n">${pct(s.discount_pct, 0)}</td><td class="n">${spct(s.avg_uplift_pct, 0)}</td><td class="n">${money(s.discount_cost)}</td>
+      <td class="n">${money(s.total_incremental_gp)}</td><td class="n">${s.roi.toFixed(2)}</td><td>${pill(s.verdict, vk(s.verdict))}</td></tr>`).join("");
+    const plan = P.plan.map(p => `<tr><td>${esc(p.promo_name)}</td><td class="n mono">${esc(p.start_date)}</td><td class="n">${pct(p.discount_pct, 0)}</td>
+      <td>${esc(String(p.categories).replace(/\|/g, ", "))}</td><td>${p.verdict ? pill(p.verdict, vk(p.verdict)) : "—"}</td></tr>`).join("");
+    el.innerHTML = `
+      <div class="view-head"><span class="eyebrow-s">Promotion ROI</span><h2>Which promotions pay for themselves</h2>
+        <p class="lede">Sales during a promotion overstate its value, because many customers would have bought anyway. Each event is compared with a model of what that category would have sold without it, including the dip afterwards.</p></div>
+      <div class="tiles">
+        <div class="tile"><span class="k">Discounts given</span><span class="v">${money(P.discount)}</span><span class="d">Across all past events</span></div>
+        <div class="tile"><span class="k">Incremental gross profit</span><span class="v">${money(P.incremental_gp)}</span><span class="d">vs no promotion</span></div>
+        <div class="tile"><span class="k">ROI</span><span class="v">${P.overall_roi.toFixed(2)}</span><span class="d">Incremental profit per $1 of discount</span></div>
+        <div class="tile"><span class="k">Truly incremental revenue</span><span class="v">${pct(P.incremental_share, 0)}</span><span class="d">Of revenue booked during promotions</span></div>
+      </div>
+      <section class="panel"><div class="panel-head"><h3>Incremental gross profit by promotion</h3><span class="sub">All runs combined, post-event dip included</span></div>
+        <div class="chart tall"><canvas id="c-promo" aria-label="Incremental gross profit by promotion"></canvas></div></section>
+      <section class="panel"><div class="panel-head"><h3>Scorecard</h3></div>
+        <div class="tbl-wrap"><table><thead><tr><th>Promotion</th><th>Scope</th><th class="n">Discount</th><th class="n">Uplift</th><th class="n">Discount cost</th><th class="n">Incremental GP</th><th class="n">ROI</th><th>Verdict</th></tr></thead><tbody>${rows}</tbody></table></div></section>
+      <section class="panel"><div class="panel-head"><h3>Next year's calendar, reviewed</h3><span class="sub">Planned events with their historical verdict</span></div>
+        <div class="tbl-wrap"><table><thead><tr><th>Promotion</th><th class="n">Starts</th><th class="n">Discount</th><th>Categories</th><th>History says</th></tr></thead><tbody>${plan}</tbody></table></div></section>`;
+  },
+  draw() {
+    const S = [...D.promotions.summary].sort((a, b) => b.total_incremental_gp - a.total_incremental_gp);
+    mk("c-promo", {
+      type: "bar",
+      data: { labels: S.map(s => s.promo_name), datasets: [{ label: "Incremental gross profit", data: S.map(s => s.total_incremental_gp),
+        backgroundColor: S.map(s => s.total_incremental_gp >= 0 ? css("--s1") : css("--s8")), borderRadius: 4, borderSkipped: false, barPercentage: 0.7 }] },
+      options: { indexAxis: "y", responsive: true, maintainAspectRatio: false,
+        scales: { x: { grid: { color: c => c.tick.value === 0 ? css("--muted") : css("--line") }, border: { display: false }, ticks: { callback: moneyTick } }, y: { grid: { display: false } } },
+        plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => ` ${money(c.parsed.x)} · ROI ${S[c.dataIndex].roi.toFixed(2)}` } } } }
+    });
+  }
+};
+
+let incYear = null;
+views.incidents = {
+  build(el) {
+    const A = D.anomaly, years = [...new Set(A.daily.map(r => r[0].slice(0, 4)))];
+    incYear = years[years.length - 1];
+    const inc = A.incidents.map(i => `<tr><td>${i.direction === "drop" ? pill("Drop", "crit") : pill("Spike", "good")}</td><td>${esc(i.series)}</td>
+      <td class="n mono">${esc(i.start)}${i.end !== i.start ? " to " + esc(i.end) : ""}</td><td class="n">${i.days}</td><td class="n">${money(i.impact)}</td><td class="n">${i.peak_z.toFixed(1)}</td></tr>`).join("");
+    const val = A.validation.map(v => `<tr><td>${esc(v.incident.replace(/_/g, " "))}</td><td class="n mono">${esc(v.window)}</td>
+      <td>${v.detected ? pill("Alerted", "good") : pill("Below threshold", "warn")}</td><td>${esc(v.strongest_series)}</td><td class="n">${v.strongest_abs_z.toFixed(1)}</td></tr>`).join("");
+    el.innerHTML = `
+      <div class="view-head"><span class="eyebrow-s">${A.series} monitored series</span><h2>Sales incidents</h2>
+        <p class="lede">For every channel, category, region, store channel and top product, a model predicts the expected day. Three-day windows that deviate by more than ${A.threshold} robust standard deviations, outside holidays, and move at least 15% of an average day's revenue become incidents.</p></div>
+      <section class="panel"><div class="panel-head"><h3>Daily revenue vs expected, all channels</h3>
+        <div class="chips" id="inc-years" role="group" aria-label="Year">${years.map(y => `<button class="chip" data-y="${y}" aria-pressed="${y === incYear}">${y}</button>`).join("")}</div></div>
+        <div class="chart tall"><canvas id="c-inc" aria-label="Daily revenue versus expected"></canvas></div>
+        <p class="note">Markers show where incidents in any monitored series began.</p></section>
+      <section class="panel"><div class="panel-head"><h3>Incident log</h3><span class="sub">Largest revenue impact first</span></div>
+        <div class="tbl-wrap"><table><thead><tr><th>Type</th><th>Series</th><th class="n">When</th><th class="n">Days</th><th class="n">Impact</th><th class="n">Peak z</th></tr></thead><tbody>${inc}</tbody></table></div></section>
+      <section class="panel"><div class="panel-head"><h3>Check against planted incidents</h3><span class="sub">The simulator injected these events; the detector did not know about them</span></div>
+        <div class="tbl-wrap"><table><thead><tr><th>Planted incident</th><th class="n">Window</th><th>Result</th><th>Strongest signal</th><th class="n">|z|</th></tr></thead><tbody>${val}</tbody></table></div>
+        <p class="note">The viral post peaks on the right product just below the alert threshold; the three-day regional storm is lost in daily noise. Hourly or store-level data would catch both.</p></section>`;
+    $("#inc-years").addEventListener("click", e => {
+      const b = e.target.closest(".chip"); if (!b) return; incYear = b.dataset.y;
+      document.querySelectorAll("#inc-years .chip").forEach(x => x.setAttribute("aria-pressed", x.dataset.y === incYear));
+      views.incidents.draw();
+    });
+  },
+  draw() {
+    const rows = D.anomaly.daily.filter(r => r[0].startsWith(incYear));
+    const idx = Object.fromEntries(rows.map((r, i) => [r[0], i]));
+    const marks = D.anomaly.incidents.filter(i => idx[i.start] != null).map(i => ({ x: i.start, y: rows[idx[i.start]][1], d: i }));
+    mk("c-inc", {
+      type: "line",
+      data: { labels: rows.map(r => r[0]), datasets: [
+        { label: "Actual", data: rows.map(r => r[1]), borderColor: css("--s1"), borderWidth: 1.4, pointRadius: 0, tension: 0 },
+        { label: "Expected", data: rows.map(r => r[2]), borderColor: css("--neutral"), borderWidth: 1.4, pointRadius: 0, tension: 0.2 },
+        { label: "Incident", type: "scatter", data: marks, pointRadius: 6, pointBackgroundColor: marks.map(m => m.d.direction === "drop" ? css("--crit") : css("--good")), pointBorderColor: css("--surface"), pointBorderWidth: 2 }] },
+      options: { responsive: true, maintainAspectRatio: false, interaction: { mode: "nearest", axis: "x", intersect: false },
+        scales: axes(moneyTick, { y: { beginAtZero: true }, x: { type: "category", ticks: { maxRotation: 0, autoSkipPadding: 30, callback(v) { return this.getLabelForValue(v).slice(5); } } } }),
+        plugins: { tooltip: { callbacks: { label: c => c.dataset.label === "Incident" ? ` ${c.raw.d.direction} in ${c.raw.d.series}: ${money(c.raw.d.impact)}` : ` ${c.dataset.label}: ${money(c.parsed.y)}` } } } }
+    });
+  }
+};
+
+views.quality = {
+  build(el) {
+    const Q = D.quality;
+    const dq = Q.report.map(r => `<tr><td>${esc(r.check)}</td><td class="n">${int(r.rows_affected)}</td><td>${esc(r.action)}</td></tr>`).join("");
+    const clv = D.clv.leaderboard.map(m => `<tr class="${m.model === D.clv.best_model ? "hl" : ""}"><td>${esc(m.model)}</td><td class="n">${money(m.mae, 0)}</td><td class="n">${m.spearman.toFixed(3)}</td><td class="n">${pct(m.top_decile_capture, 0)}</td><td class="n">${spct(m.total_bias)}</td></tr>`).join("");
+    el.innerHTML = `
+      <div class="view-head"><span class="eyebrow-s">Trust but verify</span><h2>Data and models</h2>
+        <p class="lede">The company is simulated, so the true price sensitivities, product pairings and incidents are known. That makes it possible to check whether the models find them.</p></div>
+      <div class="tiles">
+        <div class="tile"><span class="k">Elasticity error vs truth</span><span class="v">${Q.elasticity_mae.toFixed(2)}</span><span class="d">95% interval covers truth in ${pct(Q.elasticity_coverage, 0)} of categories</span></div>
+        <div class="tile"><span class="k">Planted product pairs found</span><span class="v">${Q.basket_recovered.found} / ${Q.basket_recovered.total}</span><span class="d">Among the top 40 basket rules</span></div>
+        <div class="tile"><span class="k">Planted incidents alerted</span><span class="v">${Q.anomaly_detected[0]} / ${Q.anomaly_detected[1]}</span><span class="d">The rest are near-misses, see Incidents</span></div>
+      </div>
+      <div class="grid-2">
+        <section class="panel"><div class="panel-head"><h3>Data quality fixes</h3><span class="sub">Applied before any model runs</span></div>
+          <div class="tbl-wrap"><table><thead><tr><th>Check</th><th class="n">Rows</th><th>Action</th></tr></thead><tbody>${dq}</tbody></table></div></section>
+        <section class="panel"><div class="panel-head"><h3>Customer value model (180 days)</h3><span class="sub">Out-of-time test</span></div>
+          <div class="tbl-wrap"><table><thead><tr><th>Model</th><th class="n">MAE</th><th class="n">Rank corr.</th><th class="n">Top-10% capture</th><th class="n">Bias</th></tr></thead><tbody>${clv}</tbody></table></div>
+          <p class="note">The production model cuts error by ${pct(D.clv.mae_improvement_vs_runrate, 0)} against the finance run-rate rule.</p></section>
+      </div>`;
+  },
+  draw() {}
+};
+
+/* ---------- shell ---------- */
+let current = null;
+function show(id) {
+  if (!views[id]) id = "overview";
+  current = id;
+  document.querySelectorAll("#nav button").forEach(b => b.setAttribute("aria-selected", b.dataset.v === id));
+  const main = $("#main");
+  Object.keys(views).forEach(k => { const s = document.getElementById("v-" + k); if (s) s.hidden = k !== id; });
+  let sec = document.getElementById("v-" + id);
+  if (!sec) { sec = document.createElement("div"); sec.id = "v-" + id; sec.className = "view"; main.appendChild(sec); }
+  if (!built[id]) { views[id].build(sec); built[id] = true; }
+  views[id].draw();
+  try { localStorage.setItem("msi-view", id); } catch (e) { }
+}
+function init() {
+  $("#brand-name").textContent = D.meta.company;
+  $("#foot-period").textContent = `${D.meta.start} to ${D.meta.end} · ${int(D.meta.orders)} orders`;
+  $("#nav").innerHTML = SECTIONS.map(([id, label], i) => `<button role="tab" data-v="${id}" aria-selected="false"><span class="ix">${String(i + 1).padStart(2, "0")}</span>${label}</button>`).join("");
+  $("#nav").addEventListener("click", e => { const b = e.target.closest("button"); if (b) { show(b.dataset.v); history.replaceState(null, "", "#" + b.dataset.v); window.scrollTo(0, 0); } });
+  chartTheme();
+  let start = location.hash.slice(1);
+  if (!views[start]) { try { start = localStorage.getItem("msi-view") || "overview"; } catch (e) { start = "overview"; } }
+  show(start);
+  const redraw = () => { chartTheme(); if (current) views[current].draw(); };
+  matchMedia("(prefers-color-scheme: dark)").addEventListener("change", redraw);
+  new MutationObserver(redraw).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+}
+if (window.Chart && D) init();
+else document.getElementById("main").innerHTML = '<p style="padding:24px">The chart library did not load. Check your internet connection and reload the page.</p>';
+</script>

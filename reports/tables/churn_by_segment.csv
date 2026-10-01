@@ -1,0 +1,5 @@
+segment,customers,avg_churn_prob,revenue_at_risk
+Champions,3068,0.2643,243828.6857
+Steady Regulars,2764,0.5985,203599.01
+New & Promising,1514,0.7299,27353.7034
+Deal Hunters,565,0.6736,16865.0602

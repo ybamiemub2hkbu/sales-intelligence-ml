@@ -1,0 +1,90 @@
+product_id,product_name,category,base_price,unit_cost,current_list_price
+P001,Wireless Earbuds,Electronics,79.0,63.33,63.99
+P002,Bluetooth Speaker,Electronics,59.0,49.44,81.99
+P003,Smartwatch,Electronics,199.0,153.76,233.99
+P004,Phone Case,Electronics,25.0,18.12,23.99
+P005,USB-C Fast Charger,Electronics,29.0,20.73,34.99
+P006,Power Bank 20K,Electronics,45.0,33.54,37.99
+P007,10in Tablet,Electronics,329.0,250.7,452.99
+P008,Noise-Cancelling Headphones,Electronics,249.0,177.06,220.99
+P009,Smart Plug 2-Pack,Electronics,32.0,24.77,28.99
+P010,Action Camera,Electronics,289.0,214.87,342.99
+P011,E-Reader,Electronics,139.0,107.9,143.99
+P012,Gaming Mouse,Electronics,59.0,43.39,50.99
+P013,Tablet Sleeve,Electronics,29.0,23.01,28.99
+P014,Chef Knife Set,Home & Kitchen,119.0,65.48,116.99
+P015,Cast Iron Skillet,Home & Kitchen,49.0,27.96,60.99
+P016,Burr Coffee Grinder,Home & Kitchen,89.0,48.52,79.99
+P017,French Press,Home & Kitchen,35.0,20.21,34.99
+P018,Non-Stick Pan Set,Home & Kitchen,129.0,82.34,158.99
+P019,Cutting Board,Home & Kitchen,29.0,17.56,40.99
+P020,Stand Mixer,Home & Kitchen,279.0,171.48,394.99
+P021,Air Fryer,Home & Kitchen,119.0,70.61,134.99
+P022,Linen Towel Set,Home & Kitchen,39.0,21.51,34.99
+P023,Glass Storage Set,Home & Kitchen,45.0,26.93,57.99
+P024,Electric Kettle,Home & Kitchen,49.0,30.92,43.99
+P025,Dinnerware 16pc,Home & Kitchen,89.0,49.85,125.99
+P026,Scented Candle,Home & Kitchen,22.0,13.14,17.99
+P027,2-Person Tent,Outdoor & Camping,189.0,119.52,182.99
+P028,Sleeping Bag,Outdoor & Camping,99.0,62.82,80.99
+P029,Camping Stove,Outdoor & Camping,69.0,41.44,95.99
+P030,Headlamp,Outdoor & Camping,29.0,17.42,28.99
+P031,Hiking Backpack 40L,Outdoor & Camping,139.0,86.73,159.99
+P032,Water Filter,Outdoor & Camping,39.0,26.81,48.99
+P033,Camp Chair,Outdoor & Camping,49.0,32.33,55.99
+P034,Trekking Poles,Outdoor & Camping,59.0,37.47,71.99
+P035,Cooler 30L,Outdoor & Camping,159.0,93.89,134.99
+P036,Insect Repellent,Outdoor & Camping,12.0,7.9,13.99
+P037,Sleeping Pad,Outdoor & Camping,79.0,54.44,74.99
+P038,Camp Lantern,Outdoor & Camping,35.0,22.53,38.99
+P039,Rain Jacket,Apparel,129.0,60.78,151.99
+P040,Fleece Pullover,Apparel,69.0,26.63,77.99
+P041,Merino Base Layer,Apparel,79.0,34.98,97.99
+P042,Hiking Boots,Apparel,159.0,66.24,173.99
+P043,Trail Running Shoes,Apparel,129.0,64.18,138.99
+P044,Wool Socks 3-Pack,Apparel,24.0,11.17,19.99
+P045,Denim Jacket,Apparel,89.0,40.84,125.99
+P046,Organic Cotton Tee,Apparel,25.0,10.94,34.99
+P047,Chino Pants,Apparel,59.0,19.67,58.99
+P048,Down Vest,Apparel,119.0,63.7,111.99
+P049,Sun Hat,Apparel,29.0,13.53,38.99
+P050,Leather Belt,Apparel,39.0,15.89,34.99
+P051,Yoga Mat,Sports & Fitness,39.0,25.02,43.99
+P052,Adjustable Dumbbells,Sports & Fitness,249.0,149.94,276.99
+P053,Resistance Bands,Sports & Fitness,25.0,14.02,20.99
+P054,Insulated Water Bottle,Sports & Fitness,29.0,18.52,23.99
+P055,Foam Roller,Sports & Fitness,29.0,18.35,28.99
+P056,Jump Rope,Sports & Fitness,15.0,8.44,20.99
+P057,Fitness Tracker,Sports & Fitness,99.0,59.56,95.99
+P058,Kettlebell 12kg,Sports & Fitness,59.0,36.47,56.99
+P059,Gym Bag,Sports & Fitness,49.0,29.06,57.99
+P060,Protein Shaker,Sports & Fitness,12.0,7.26,12.99
+P061,Yoga Block Set,Sports & Fitness,19.0,11.23,17.99
+P062,Vitamin C Serum,Beauty & Care,34.0,13.02,29.99
+P063,Daily Moisturizer,Beauty & Care,28.0,12.57,32.99
+P064,Mineral Sunscreen,Beauty & Care,19.0,6.29,23.99
+P065,Shampoo Bar,Beauty & Care,14.0,4.78,17.99
+P066,Beard Oil,Beauty & Care,22.0,8.23,18.99
+P067,Lip Balm 4-Pack,Beauty & Care,9.0,3.66,10.99
+P068,Bamboo Toothbrush 4-Pack,Beauty & Care,12.0,4.76,10.99
+P069,Body Wash,Beauty & Care,11.0,4.42,10.99
+P070,Face Mask Set,Beauty & Care,24.0,10.44,27.99
+P071,Perfume 50ml,Beauty & Care,69.0,31.26,71.99
+P072,Building Blocks 500pc,Toys & Games,49.0,27.59,44.99
+P073,Strategy Board Game,Toys & Games,39.0,19.36,54.99
+P074,Jigsaw Puzzle 1000pc,Toys & Games,22.0,12.3,28.99
+P075,RC Car,Toys & Games,69.0,40.94,71.99
+P076,Plush Bear,Toys & Games,19.0,8.54,16.99
+P077,Science Kit,Toys & Games,35.0,19.65,46.99
+P078,Card Game,Toys & Games,15.0,8.06,19.99
+P079,Wooden Train Set,Toys & Games,59.0,33.99,67.99
+P080,Art Supplies Kit,Toys & Games,29.0,17.18,40.99
+P081,Single-Origin Coffee Beans,Gourmet Grocery,18.0,12.67,22.99
+P082,Artisan Dark Chocolate,Gourmet Grocery,8.0,4.92,8.99
+P083,Extra Virgin Olive Oil,Gourmet Grocery,22.0,13.78,25.99
+P084,Trail Mix 1kg,Gourmet Grocery,16.0,11.44,18.99
+P085,Loose Leaf Tea,Gourmet Grocery,14.0,10.35,12.99
+P086,Raw Honey,Gourmet Grocery,12.0,8.19,9.99
+P087,Hot Sauce Trio,Gourmet Grocery,19.0,14.34,17.99
+P088,Gourmet Gift Basket,Gourmet Grocery,79.0,54.57,107.99
+P089,Dried Mango,Gourmet Grocery,9.0,5.94,7.99

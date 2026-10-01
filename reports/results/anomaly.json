@@ -1,0 +1,161 @@
+{
+  "series_monitored": 43,
+  "flagged_days": 92,
+  "incidents": 10,
+  "raw_incidents": 57,
+  "materiality_threshold": 2446.5527983576644,
+  "isolation_forest_days": 11,
+  "detected_injected": 2,
+  "injected_total": 4,
+  "validation": [
+    {
+      "incident": "website_outage",
+      "window": "2024-03-12 to 2024-03-13",
+      "detected": true,
+      "strongest_series": "Channel: Online",
+      "strongest_abs_z": 4.401663215468277,
+      "series_flagged": "Channel: Online, Total",
+      "isolation_forest_flag": true
+    },
+    {
+      "incident": "viral_social_post",
+      "window": "2024-09-18 to 2024-09-21",
+      "detected": false,
+      "strongest_series": "Product: Wireless Earbuds",
+      "strongest_abs_z": 3.351209134930423,
+      "series_flagged": "",
+      "isolation_forest_flag": false
+    },
+    {
+      "incident": "supply_stockout",
+      "window": "2025-02-03 to 2025-02-23",
+      "detected": true,
+      "strongest_series": "Category: Outdoor & Camping",
+      "strongest_abs_z": 6.340805589448684,
+      "series_flagged": "Category: Outdoor & Camping",
+      "isolation_forest_flag": true
+    },
+    {
+      "incident": "regional_storm",
+      "window": "2025-01-15 to 2025-01-17",
+      "detected": false,
+      "strongest_series": "Category: Beauty & Care",
+      "strongest_abs_z": 3.252962888503576,
+      "series_flagged": "",
+      "isolation_forest_flag": false
+    }
+  ],
+  "top_incidents": [
+    {
+      "series": "Category: Outdoor & Camping",
+      "direction": "drop",
+      "start": "2025-02-03",
+      "end": "2025-02-23",
+      "days": 21,
+      "actual": 5710.36,
+      "expected": 30737.3,
+      "impact": -25026.94,
+      "peak_z": 6.34
+    },
+    {
+      "series": "Total",
+      "direction": "drop",
+      "start": "2024-03-13",
+      "end": "2024-03-13",
+      "days": 1,
+      "actual": 4345.0,
+      "expected": 11486.61,
+      "impact": -7141.61,
+      "peak_z": 4.16
+    },
+    {
+      "series": "Channel: Online",
+      "direction": "drop",
+      "start": "2024-03-12",
+      "end": "2024-03-13",
+      "days": 2,
+      "actual": 500.93,
+      "expected": 7328.73,
+      "impact": -6827.8,
+      "peak_z": 4.4
+    },
+    {
+      "series": "Channel: Online",
+      "direction": "drop",
+      "start": "2025-09-08",
+      "end": "2025-09-08",
+      "days": 1,
+      "actual": 2922.75,
+      "expected": 7204.86,
+      "impact": -4282.11,
+      "peak_z": 4.0
+    },
+    {
+      "series": "Channel: In-Store",
+      "direction": "drop",
+      "start": "2023-04-29",
+      "end": "2023-04-29",
+      "days": 1,
+      "actual": 3144.75,
+      "expected": 7246.6,
+      "impact": -4101.85,
+      "peak_z": 3.65
+    },
+    {
+      "series": "Store: North / Online",
+      "direction": "drop",
+      "start": "2023-03-09",
+      "end": "2023-03-10",
+      "days": 2,
+      "actual": 511.7,
+      "expected": 4603.85,
+      "impact": -4092.15,
+      "peak_z": 4.27
+    },
+    {
+      "series": "Channel: In-Store",
+      "direction": "drop",
+      "start": "2025-12-26",
+      "end": "2025-12-26",
+      "days": 1,
+      "actual": 5280.65,
+      "expected": 9144.13,
+      "impact": -3863.48,
+      "peak_z": 4.38
+    },
+    {
+      "series": "Category: Sports & Fitness",
+      "direction": "drop",
+      "start": "2023-06-26",
+      "end": "2023-06-28",
+      "days": 3,
+      "actual": 1541.62,
+      "expected": 5055.49,
+      "impact": -3513.87,
+      "peak_z": 4.08
+    },
+    {
+      "series": "Store: North / Online",
+      "direction": "spike",
+      "start": "2023-01-13",
+      "end": "2023-01-13",
+      "days": 1,
+      "actual": 3829.73,
+      "expected": 848.02,
+      "impact": 2981.71,
+      "peak_z": 3.57
+    },
+    {
+      "series": "Region: North",
+      "direction": "drop",
+      "start": "2023-01-21",
+      "end": "2023-01-21",
+      "days": 1,
+      "actual": 2594.12,
+      "expected": 5453.15,
+      "impact": -2859.03,
+      "peak_z": 3.84
+    }
+  ],
+  "lost_revenue_from_drops": -61708.83554270799
+}

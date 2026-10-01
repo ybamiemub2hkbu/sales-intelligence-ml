@@ -1,0 +1,13 @@
+promo_id,promo_name,start_date,end_date,discount_pct,categories,roi,verdict
+PR037,New Year Fitness Push,2026-01-02,2026-01-15,0.2,Sports & Fitness,-0.284,Redesign / stop
+PR038,Winter Apparel Clearance,2026-01-20,2026-01-31,0.4,Apparel,-0.4162,Redesign / stop
+PR039,Valentine's Beauty,2026-02-07,2026-02-14,0.15,Beauty & Care,0.4472,Optimise
+PR040,Spring Fashion Event,2026-03-15,2026-03-28,0.25,Apparel,-0.3035,Redesign / stop
+PR041,Mother's Day Gifts,2026-05-01,2026-05-11,0.15,Beauty & Care|Home & Kitchen,-0.2549,Redesign / stop
+PR042,Summer Outdoor Sale,2026-06-15,2026-07-05,0.2,Outdoor & Camping,-0.4653,Redesign / stop
+PR043,Mid-Year Mega Sale,2026-07-15,2026-07-18,0.15,ALL,-0.8817,Redesign / stop
+PR044,Back to School Tech,2026-08-08,2026-08-25,0.15,Electronics|Apparel,-0.3995,Redesign / stop
+PR045,Electronics Flash Weekend,2026-10-11,2026-10-13,0.35,Electronics,-0.8279,Redesign / stop
+PR046,Black Friday Week,2026-11-23,2026-11-30,0.3,ALL,-0.4404,Redesign / stop
+PR047,Holiday Toy Event,2026-12-01,2026-12-20,0.2,Toys & Games,0.0242,Optimise
+PR048,Gourmet Gifting,2026-12-05,2026-12-23,0.1,Gourmet Grocery,0.3113,Optimise

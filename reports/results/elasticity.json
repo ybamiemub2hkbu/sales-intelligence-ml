@@ -1,0 +1,256 @@
+{
+  "elasticities": [
+    {
+      "category": "Electronics",
+      "elasticity": -2.3385,
+      "ci_low": -2.4825,
+      "ci_high": -2.1758,
+      "n_obs": 2043,
+      "true_elasticity_simulated": -2.2,
+      "ci_covers_truth": true
+    },
+    {
+      "category": "Toys & Games",
+      "elasticity": -1.9363,
+      "ci_low": -2.2033,
+      "ci_high": -1.7189,
+      "n_obs": 1391,
+      "true_elasticity_simulated": -1.9,
+      "ci_covers_truth": true
+    },
+    {
+      "category": "Sports & Fitness",
+      "elasticity": -1.7614,
+      "ci_low": -1.9587,
+      "ci_high": -1.5653,
+      "n_obs": 1728,
+      "true_elasticity_simulated": -1.6,
+      "ci_covers_truth": true
+    },
+    {
+      "category": "Apparel",
+      "elasticity": -1.5835,
+      "ci_low": -1.7271,
+      "ci_high": -1.4281,
+      "n_obs": 1890,
+      "true_elasticity_simulated": -1.8,
+      "ci_covers_truth": false
+    },
+    {
+      "category": "Home & Kitchen",
+      "elasticity": -1.4251,
+      "ci_low": -1.6044,
+      "ci_high": -1.2226,
+      "n_obs": 2051,
+      "true_elasticity_simulated": -1.5,
+      "ci_covers_truth": true
+    },
+    {
+      "category": "Outdoor & Camping",
+      "elasticity": -1.2715,
+      "ci_low": -1.4704,
+      "ci_high": -1.052,
+      "n_obs": 1878,
+      "true_elasticity_simulated": -1.3,
+      "ci_covers_truth": true
+    },
+    {
+      "category": "Beauty & Care",
+      "elasticity": -1.204,
+      "ci_low": -1.4382,
+      "ci_high": -1.0168,
+      "n_obs": 1577,
+      "true_elasticity_simulated": -1.1,
+      "ci_covers_truth": true
+    },
+    {
+      "category": "Gourmet Grocery",
+      "elasticity": -0.7439,
+      "ci_low": -1.022,
+      "ci_high": -0.4457,
+      "n_obs": 1415,
+      "true_elasticity_simulated": -0.8,
+      "ci_covers_truth": true
+    }
+  ],
+  "guardrail": 0.1,
+  "total_annual_profit_uplift": 201412.10633216766,
+  "current_annual_profit": 3953218.4033333333,
+  "n_raise": 76,
+  "n_lower": 13,
+  "n_hold": 0,
+  "by_category": [
+    {
+      "category": "Electronics",
+      "products": 13,
+      "raise": 12,
+      "lower": 1,
+      "avg_price_change": 0.0785,
+      "annual_profit_uplift": 52989.4778,
+      "weekly_profit_now": 10455.3233,
+      "weekly_revenue_now": 38322.06,
+      "weekly_revenue_new": 34935.2586,
+      "profit_uplift_pct": 0.0975,
+      "revenue_change_pct": -0.0884,
+      "elasticity": -2.3385
+    },
+    {
+      "category": "Home & Kitchen",
+      "products": 13,
+      "raise": 13,
+      "lower": 0,
+      "avg_price_change": 0.098,
+      "annual_profit_uplift": 45261.9732,
+      "weekly_profit_now": 18687.7892,
+      "weekly_revenue_now": 37306.2117,
+      "weekly_revenue_new": 35842.2218,
+      "profit_uplift_pct": 0.0466,
+      "revenue_change_pct": -0.0392,
+      "elasticity": -1.4251
+    },
+    {
+      "category": "Outdoor & Camping",
+      "products": 12,
+      "raise": 12,
+      "lower": 0,
+      "avg_price_change": 0.0979,
+      "annual_profit_uplift": 30848.8676,
+      "weekly_profit_now": 4699.6825,
+      "weekly_revenue_now": 12857.5225,
+      "weekly_revenue_new": 12533.2907,
+      "profit_uplift_pct": 0.1262,
+      "revenue_change_pct": -0.0252,
+      "elasticity": -1.2715
+    },
+    {
+      "category": "Gourmet Grocery",
+      "products": 9,
+      "raise": 9,
+      "lower": 0,
+      "avg_price_change": 0.1038,
+      "annual_profit_uplift": 28812.6536,
+      "weekly_profit_now": 3502.9917,
+      "weekly_revenue_now": 8230.6158,
+      "weekly_revenue_new": 8445.227,
+      "profit_uplift_pct": 0.1582,
+      "revenue_change_pct": 0.0261,
+      "elasticity": -0.7439
+    },
+    {
+      "category": "Sports & Fitness",
+      "products": 11,
+      "raise": 10,
+      "lower": 1,
+      "avg_price_change": 0.0843,
+      "annual_profit_uplift": 15773.7544,
+      "weekly_profit_now": 8308.825,
+      "weekly_revenue_now": 18744.4883,
+      "weekly_revenue_new": 17452.6873,
+      "profit_uplift_pct": 0.0365,
+      "revenue_change_pct": -0.0689,
+      "elasticity": -1.7614
+    },
+    {
+      "category": "Apparel",
+      "products": 12,
+      "raise": 6,
+      "lower": 6,
+      "avg_price_change": 0.0022,
+      "annual_profit_uplift": 11956.6988,
+      "weekly_profit_now": 20597.6125,
+      "weekly_revenue_now": 34974.8533,
+      "weekly_revenue_new": 34576.0705,
+      "profit_uplift_pct": 0.0112,
+      "revenue_change_pct": -0.0114,
+      "elasticity": -1.5835
+    },
+    {
+      "category": "Beauty & Care",
+      "products": 10,
+      "raise": 10,
+      "lower": 0,
+      "avg_price_change": 0.0968,
+      "annual_profit_uplift": 8861.6546,
+      "weekly_profit_now": 4195.4008,
+      "weekly_revenue_now": 7046.1933,
+      "weekly_revenue_new": 6913.8158,
+      "profit_uplift_pct": 0.0406,
+      "revenue_change_pct": -0.0188,
+      "elasticity": -1.204
+    },
+    {
+      "category": "Toys & Games",
+      "products": 9,
+      "raise": 4,
+      "lower": 5,
+      "avg_price_change": -0.0269,
+      "annual_profit_uplift": 6907.0263,
+      "weekly_profit_now": 5575.8058,
+      "weekly_revenue_now": 11632.7975,
+      "weekly_revenue_new": 11391.8677,
+      "profit_uplift_pct": 0.0238,
+      "revenue_change_pct": -0.0207,
+      "elasticity": -1.9363
+    }
+  ],
+  "truth_coverage": 0.875,
+  "mean_abs_error_vs_truth": 0.10201915091632437,
+  "top_products": [
+    {
+      "product_name": "Noise-Cancelling Headphones",
+      "category": "Electronics",
+      "current_list_price": 220.99,
+      "recommended_price": 242.99,
+      "annual_profit_uplift": 14426.81
+    },
+    {
+      "product_name": "Wireless Earbuds",
+      "category": "Electronics",
+      "current_list_price": 63.99,
+      "recommended_price": 69.99,
+      "annual_profit_uplift": 14030.92
+    },
+    {
+      "product_name": "Extra Virgin Olive Oil",
+      "category": "Gourmet Grocery",
+      "current_list_price": 25.99,
+      "recommended_price": 28.99,
+      "annual_profit_uplift": 12160.76
+    },
+    {
+      "product_name": "Stand Mixer",
+      "category": "Home & Kitchen",
+      "current_list_price": 394.99,
+      "recommended_price": 433.99,
+      "annual_profit_uplift": 10956.66
+    },
+    {
+      "product_name": "Adjustable Dumbbells",
+      "category": "Sports & Fitness",
+      "current_list_price": 276.99,
+      "recommended_price": 304.99,
+      "annual_profit_uplift": 8238.36
+    },
+    {
+      "product_name": "2-Person Tent",
+      "category": "Outdoor & Camping",
+      "current_list_price": 182.99,
+      "recommended_price": 200.99,
+      "annual_profit_uplift": 8196.02
+    },
+    {
+      "product_name": "Chef Knife Set",
+      "category": "Home & Kitchen",
+      "current_list_price": 116.99,
+      "recommended_price": 128.99,
+      "annual_profit_uplift": 7554.99
+    },
+    {
+      "product_name": "Gaming Mouse",
+      "category": "Electronics",
+      "current_list_price": 50.99,
+      "recommended_price": 55.99,
+      "annual_profit_uplift": 7285.33
+    }
+  ]
+}

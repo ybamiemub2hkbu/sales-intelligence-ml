@@ -1,0 +1,5 @@
+value_risk_action,customers,predicted_clv_180d,avg_churn_prob,revenue_365d,clv_share
+Protect,87,53593.4493,0.4057,82773.11,0.0173
+Grow & reward,1891,1937367.9203,0.1069,3954979.55,0.6271
+Automate win-back,5275,839260.5268,0.6747,1718598.35,0.2716
+Maintain,658,259347.4613,0.2343,549333.3,0.0839

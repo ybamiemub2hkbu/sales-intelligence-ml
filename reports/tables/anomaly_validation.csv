@@ -1,0 +1,5 @@
+incident,window,detected,strongest_series,strongest_abs_z,series_flagged,isolation_forest_flag
+website_outage,2024-03-12 to 2024-03-13,True,Channel: Online,4.401663215468277,"Channel: Online, Total",True
+viral_social_post,2024-09-18 to 2024-09-21,False,Product: Wireless Earbuds,3.351209134930423,,False
+supply_stockout,2025-02-03 to 2025-02-23,True,Category: Outdoor & Camping,6.340805589448684,Category: Outdoor & Camping,True
+regional_storm,2025-01-15 to 2025-01-17,False,Category: Beauty & Care,3.252962888503576,,False

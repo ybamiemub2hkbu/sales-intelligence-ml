@@ -1,0 +1,69 @@
+{
+  "horizon_days": 180,
+  "best_model": "Gradient boosting (Poisson)",
+  "leaderboard": [
+    {
+      "model": "Gradient boosting (Poisson)",
+      "mae": 289.6689,
+      "rmse": 470.5314,
+      "spearman": 0.632,
+      "top_decile_capture": 0.3903,
+      "total_bias": -0.0418
+    },
+    {
+      "model": "Tweedie GLM",
+      "mae": 296.1915,
+      "rmse": 483.9706,
+      "spearman": 0.6243,
+      "top_decile_capture": 0.3762,
+      "total_bias": -0.0469
+    },
+    {
+      "model": "Run-rate baseline (last 12m x 180/365)",
+      "mae": 320.4221,
+      "rmse": 520.5106,
+      "spearman": 0.5252,
+      "top_decile_capture": 0.3602,
+      "total_bias": 0.0416
+    }
+  ],
+  "mae_improvement_vs_runrate": 0.09597722113765739,
+  "top_decile_capture": 0.39028567660284136,
+  "spearman": 0.6319704709287032,
+  "predicted_clv_total_next_180d": 3089569.3577280324,
+  "top10pct_customers_clv_share": 0.383868138985542,
+  "value_risk": [
+    {
+      "value_risk_action": "Protect",
+      "customers": 87,
+      "predicted_clv_180d": 53593.4493,
+      "avg_churn_prob": 0.4057,
+      "revenue_365d": 82773.11,
+      "clv_share": 0.0173
+    },
+    {
+      "value_risk_action": "Grow & reward",
+      "customers": 1891,
+      "predicted_clv_180d": 1937367.9203,
+      "avg_churn_prob": 0.1069,
+      "revenue_365d": 3954979.55,
+      "clv_share": 0.6271
+    },
+    {
+      "value_risk_action": "Automate win-back",
+      "customers": 5275,
+      "predicted_clv_180d": 839260.5268,
+      "avg_churn_prob": 0.6747,
+      "revenue_365d": 1718598.35,
+      "clv_share": 0.2716
+    },
+    {
+      "value_risk_action": "Maintain",
+      "customers": 658,
+      "predicted_clv_180d": 259347.4613,
+      "avg_churn_prob": 0.2343,
+      "revenue_365d": 549333.3,
+      "clv_share": 0.0839
+    }
+  ]
+}

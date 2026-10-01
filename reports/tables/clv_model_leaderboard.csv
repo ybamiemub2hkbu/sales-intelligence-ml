@@ -1,0 +1,4 @@
+model,mae,rmse,spearman,top_decile_capture,total_bias
+Gradient boosting (Poisson),289.6689,470.5314,0.632,0.3903,-0.0418
+Tweedie GLM,296.1915,483.9706,0.6243,0.3762,-0.0469
+Run-rate baseline (last 12m x 180/365),320.4221,520.5106,0.5252,0.3602,0.0416

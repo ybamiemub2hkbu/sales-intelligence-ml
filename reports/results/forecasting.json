@@ -1,0 +1,163 @@
+{
+  "horizon_weeks": 13,
+  "n_origins": 4,
+  "metrics": [
+    {
+      "method": "Ensemble (ML + seasonal naive)",
+      "wape_category_week": 0.13783804156608598,
+      "wape_total_week": 0.07012495752438032,
+      "bias": 0.0012010696067023255
+    },
+    {
+      "method": "ML model",
+      "wape_category_week": 0.14595083401202305,
+      "wape_total_week": 0.07573858774440546,
+      "bias": -0.0023125445813931256
+    },
+    {
+      "method": "Seasonal naive x growth",
+      "wape_category_week": 0.15954185561220802,
+      "wape_total_week": 0.07954701317491628,
+      "bias": 0.00471468379479748
+    },
+    {
+      "method": "Moving average (8w)",
+      "wape_category_week": 0.22684512815873709,
+      "wape_total_week": 0.1400157326285662,
+      "bias": -0.03007547959489755
+    }
+  ],
+  "best_method": "Ensemble (ML + seasonal naive)",
+  "production_method": "Ensemble (ML + seasonal naive)",
+  "repaired_weeks": [
+    {
+      "category": "Beauty & Care",
+      "week_start": "2023-06-05",
+      "actual": 5192.28,
+      "repaired_to": 3327.96
+    },
+    {
+      "category": "Outdoor & Camping",
+      "week_start": "2024-11-04",
+      "actual": 11275.960000000001,
+      "repaired_to": 6965.89
+    },
+    {
+      "category": "Outdoor & Camping",
+      "week_start": "2025-02-03",
+      "actual": 1060.41,
+      "repaired_to": 7172.96
+    },
+    {
+      "category": "Outdoor & Camping",
+      "week_start": "2025-02-10",
+      "actual": 2479.19,
+      "repaired_to": 7172.96
+    },
+    {
+      "category": "Outdoor & Camping",
+      "week_start": "2025-02-17",
+      "actual": 1646.82,
+      "repaired_to": 7172.96
+    },
+    {
+      "category": "Toys & Games",
+      "week_start": "2023-01-02",
+      "actual": 4561.09,
+      "repaired_to": 1990.48
+    },
+    {
+      "category": "Toys & Games",
+      "week_start": "2024-09-16",
+      "actual": 5836.3,
+      "repaired_to": 3390.53
+    }
+  ],
+  "production_wape": 0.13783804156608598,
+  "ml_wape": 0.14595083401202305,
+  "baseline_wape": 0.15954185561220802,
+  "error_reduction_vs_baseline": 0.13603837038774724,
+  "next_quarter_total": {
+    "p10": 1333935.6037902003,
+    "p50": 1690043.38650784,
+    "p90": 2138770.0568352905,
+    "last_year": 1417834.65,
+    "growth": 0.19198905634577357
+  },
+  "next_quarter_start": "2025-12-29",
+  "next_quarter_end": "2026-03-29",
+  "by_category": [
+    {
+      "category": "Toys & Games",
+      "p10": 47065.40976142933,
+      "p50": 59392.23392194039,
+      "p90": 75576.7645796792,
+      "same_weeks_last_year": 46285.57,
+      "expected_growth": 0.28316954770007996
+    },
+    {
+      "category": "Sports & Fitness",
+      "p10": 230942.53195883462,
+      "p50": 291824.5450130828,
+      "p90": 370545.1017673338,
+      "same_weeks_last_year": 232128.68,
+      "expected_growth": 0.25716712391197327
+    },
+    {
+      "category": "Outdoor & Camping",
+      "p10": 114344.79714433102,
+      "p50": 145610.0600468081,
+      "p90": 183070.116803097,
+      "same_weeks_last_year": 121349.5,
+      "expected_growth": 0.19992303261907218
+    },
+    {
+      "category": "Beauty & Care",
+      "p10": 66785.54547975735,
+      "p50": 84696.03892791382,
+      "p90": 107037.04747480061,
+      "same_weeks_last_year": 71633.35999999999,
+      "expected_growth": 0.18235468680952338
+    },
+    {
+      "category": "Home & Kitchen",
+      "p10": 285729.71484547504,
+      "p50": 361611.9917389459,
+      "p90": 458295.310798341,
+      "same_weeks_last_year": 306183.48,
+      "expected_growth": 0.18103038001575356
+    },
+    {
+      "category": "Electronics",
+      "p10": 281930.02786540805,
+      "p50": 357038.6834973783,
+      "p90": 452062.2313123938,
+      "same_weeks_last_year": 303493.47000000003,
+      "expected_growth": 0.17642954063353744
+    },
+    {
+      "category": "Gourmet Grocery",
+      "p10": 67064.40443121533,
+      "p50": 85093.36460061918,
+      "p90": 107482.63384499689,
+      "same_weeks_last_year": 72900.09000000001,
+      "expected_growth": 0.1672600760934475
+    },
+    {
+      "category": "Apparel",
+      "p10": 240073.1723037495,
+      "p50": 304776.4687611515,
+      "p90": 384700.85025464796,
+      "same_weeks_last_year": 263860.5,
+      "expected_growth": 0.15506666879336417
+    }
+  ],
+  "top_features": [
+    "ly_ratio",
+    "lag1_ratio",
+    "ly_next_ratio",
+    "momentum",
+    "ly_prev_ratio",
+    "yoy_level"
+  ]
+}

@@ -1,0 +1,49 @@
+promo_id,promo_name,start_date,end_date,discount_pct,categories,status
+PR001,New Year Fitness Push,2023-01-02,2023-01-15,0.2,Sports & Fitness,completed
+PR002,Winter Apparel Clearance,2023-01-20,2023-01-31,0.4,Apparel,completed
+PR003,Valentine's Beauty,2023-02-07,2023-02-14,0.15,Beauty & Care,completed
+PR004,Spring Fashion Event,2023-03-15,2023-03-28,0.25,Apparel,completed
+PR005,Mother's Day Gifts,2023-05-01,2023-05-11,0.15,Beauty & Care|Home & Kitchen,completed
+PR006,Summer Outdoor Sale,2023-06-15,2023-07-05,0.2,Outdoor & Camping,completed
+PR007,Mid-Year Mega Sale,2023-07-15,2023-07-18,0.15,ALL,completed
+PR008,Back to School Tech,2023-08-08,2023-08-25,0.15,Electronics|Apparel,completed
+PR009,Electronics Flash Weekend,2023-10-11,2023-10-13,0.35,Electronics,completed
+PR010,Black Friday Week,2023-11-20,2023-11-27,0.3,ALL,completed
+PR011,Holiday Toy Event,2023-12-01,2023-12-20,0.2,Toys & Games,completed
+PR012,Gourmet Gifting,2023-12-05,2023-12-23,0.1,Gourmet Grocery,completed
+PR013,New Year Fitness Push,2024-01-02,2024-01-15,0.2,Sports & Fitness,completed
+PR014,Winter Apparel Clearance,2024-01-20,2024-01-31,0.4,Apparel,completed
+PR015,Valentine's Beauty,2024-02-07,2024-02-14,0.15,Beauty & Care,completed
+PR016,Spring Fashion Event,2024-03-15,2024-03-28,0.25,Apparel,completed
+PR017,Mother's Day Gifts,2024-05-01,2024-05-11,0.15,Beauty & Care|Home & Kitchen,completed
+PR018,Summer Outdoor Sale,2024-06-15,2024-07-05,0.2,Outdoor & Camping,completed
+PR019,Mid-Year Mega Sale,2024-07-15,2024-07-18,0.15,ALL,completed
+PR020,Back to School Tech,2024-08-08,2024-08-25,0.15,Electronics|Apparel,completed
+PR021,Electronics Flash Weekend,2024-10-11,2024-10-13,0.35,Electronics,completed
+PR022,Black Friday Week,2024-11-25,2024-12-02,0.3,ALL,completed
+PR023,Holiday Toy Event,2024-12-01,2024-12-20,0.2,Toys & Games,completed
+PR024,Gourmet Gifting,2024-12-05,2024-12-23,0.1,Gourmet Grocery,completed
+PR025,New Year Fitness Push,2025-01-02,2025-01-15,0.2,Sports & Fitness,completed
+PR026,Winter Apparel Clearance,2025-01-20,2025-01-31,0.4,Apparel,completed
+PR027,Valentine's Beauty,2025-02-07,2025-02-14,0.15,Beauty & Care,completed
+PR028,Spring Fashion Event,2025-03-15,2025-03-28,0.25,Apparel,completed
+PR029,Mother's Day Gifts,2025-05-01,2025-05-11,0.15,Beauty & Care|Home & Kitchen,completed
+PR030,Summer Outdoor Sale,2025-06-15,2025-07-05,0.2,Outdoor & Camping,completed
+PR031,Mid-Year Mega Sale,2025-07-15,2025-07-18,0.15,ALL,completed
+PR032,Back to School Tech,2025-08-08,2025-08-25,0.15,Electronics|Apparel,completed
+PR033,Electronics Flash Weekend,2025-10-11,2025-10-13,0.35,Electronics,completed
+PR034,Black Friday Week,2025-11-24,2025-12-01,0.3,ALL,completed
+PR035,Holiday Toy Event,2025-12-01,2025-12-20,0.2,Toys & Games,completed
+PR036,Gourmet Gifting,2025-12-05,2025-12-23,0.1,Gourmet Grocery,completed
+PR037,New Year Fitness Push,2026-01-02,2026-01-15,0.2,Sports & Fitness,planned
+PR038,Winter Apparel Clearance,2026-01-20,2026-01-31,0.4,Apparel,planned
+PR039,Valentine's Beauty,2026-02-07,2026-02-14,0.15,Beauty & Care,planned
+PR040,Spring Fashion Event,2026-03-15,2026-03-28,0.25,Apparel,planned
+PR041,Mother's Day Gifts,2026-05-01,2026-05-11,0.15,Beauty & Care|Home & Kitchen,planned
+PR042,Summer Outdoor Sale,2026-06-15,2026-07-05,0.2,Outdoor & Camping,planned
+PR043,Mid-Year Mega Sale,2026-07-15,2026-07-18,0.15,ALL,planned
+PR044,Back to School Tech,2026-08-08,2026-08-25,0.15,Electronics|Apparel,planned
+PR045,Electronics Flash Weekend,2026-10-11,2026-10-13,0.35,Electronics,planned
+PR046,Black Friday Week,2026-11-23,2026-11-30,0.3,ALL,planned
+PR047,Holiday Toy Event,2026-12-01,2026-12-20,0.2,Toys & Games,planned
+PR048,Gourmet Gifting,2026-12-05,2026-12-23,0.1,Gourmet Grocery,planned

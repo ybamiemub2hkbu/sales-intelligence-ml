@@ -1,0 +1,86 @@
+{
+  "horizon_days": 120,
+  "test_snapshot": "2025-09-03",
+  "train_snapshots": [
+    "2025-05-06",
+    "2025-03-07",
+    "2025-01-06"
+  ],
+  "base_churn_rate_test": 0.5011307702540907,
+  "best_model": "Random forest",
+  "leaderboard": [
+    {
+      "model": "Random forest",
+      "cv_roc_auc": 0.8281,
+      "cv_roc_auc_std": 0.0071,
+      "cv_pr_auc": 0.8279,
+      "test_roc_auc": 0.838,
+      "test_pr_auc": 0.8172,
+      "test_brier": 0.1642
+    },
+    {
+      "model": "Logistic regression",
+      "cv_roc_auc": 0.8266,
+      "cv_roc_auc_std": 0.0076,
+      "cv_pr_auc": 0.8273,
+      "test_roc_auc": 0.8364,
+      "test_pr_auc": 0.8174,
+      "test_brier": 0.1653
+    },
+    {
+      "model": "Gradient boosting",
+      "cv_roc_auc": 0.8262,
+      "cv_roc_auc_std": 0.0066,
+      "cv_pr_auc": 0.8285,
+      "test_roc_auc": 0.8395,
+      "test_pr_auc": 0.8233,
+      "test_brier": 0.1639
+    }
+  ],
+  "test_roc_auc": 0.8380255906556943,
+  "test_pr_auc": 0.8171510167813107,
+  "top_decile_lift": 1.791161980581647,
+  "top_drivers": [
+    "recency_days",
+    "frequency",
+    "orders_90d",
+    "avg_interpurchase_days",
+    "revenue_90d",
+    "recency_vs_cadence"
+  ],
+  "optimal_contact_share": 0.2732473061061594,
+  "optimal_net_profit_test": 13167.527369909083,
+  "contact_all_net_profit_test": -13174.515901192077,
+  "active_customers_now": 7911,
+  "high_risk_customers_now": 3397,
+  "revenue_at_risk_now": 491646.4593424505,
+  "high_risk_revenue_at_risk": 214870.49817090406,
+  "recommended_contacts_now": 2162,
+  "recommended_contacts_profit_at_stake": 122164.1796548783,
+  "by_segment": [
+    {
+      "segment": "Champions",
+      "customers": 3068,
+      "avg_churn_prob": 0.2643,
+      "revenue_at_risk": 243828.6857
+    },
+    {
+      "segment": "Steady Regulars",
+      "customers": 2764,
+      "avg_churn_prob": 0.5985,
+      "revenue_at_risk": 203599.01
+    },
+    {
+      "segment": "New & Promising",
+      "customers": 1514,
+      "avg_churn_prob": 0.7299,
+      "revenue_at_risk": 27353.7034
+    },
+    {
+      "segment": "Deal Hunters",
+      "customers": 565,
+      "avg_churn_prob": 0.6736,
+      "revenue_at_risk": 16865.0602
+    }
+  ]
+}

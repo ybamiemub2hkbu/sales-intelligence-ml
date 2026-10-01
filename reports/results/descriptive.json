@@ -1,0 +1,135 @@
+{
+  "kpis": {
+    "period_start": "2023-01-01",
+    "period_end": "2025-12-31",
+    "net_revenue": 16161633.159999998,
+    "gross_revenue": 17876145.78,
+    "gross_profit": 6493207.540000001,
+    "gross_margin": 0.4017667939692304,
+    "orders": 92673,
+    "customers": 13177,
+    "active_customers_365d": 7911,
+    "avg_order_value": 174.39419420974826,
+    "return_rate_revenue": 0.09591064209815367,
+    "revenue_lost_to_returns": 1714512.62,
+    "discount_spend": 639503.7000000002,
+    "revenue_by_year": {
+      "2023": 4502888.61,
+      "2024": 5353060.24,
+      "2025": 6305684.31
+    },
+    "yoy_growth_last_year": 0.17795878007903743
+  },
+  "concentration": {
+    "top10_share": 0.5234735912048138,
+    "top20_share": 0.7171106444047023
+  },
+  "category": [
+    {
+      "category": "Electronics",
+      "net": 3575430.41,
+      "gp": 790738.91,
+      "disc": 124989.8,
+      "gross": 3910033.1,
+      "margin": 0.22115908277459664
+    },
+    {
+      "category": "Home & Kitchen",
+      "net": 3399209.38,
+      "gp": 1523124.55,
+      "disc": 81700.6,
+      "gross": 3632369.6,
+      "margin": 0.4480820037040496
+    },
+    {
+      "category": "Apparel",
+      "net": 3068898.35,
+      "gp": 1739037.21,
+      "disc": 212567.75,
+      "gross": 3842191.23,
+      "margin": 0.5666649760491416
+    },
+    {
+      "category": "Sports & Fitness",
+      "net": 1967344.66,
+      "gp": 821314.48,
+      "disc": 61502.9,
+      "gross": 2114518.89,
+      "margin": 0.4174736113599942
+    },
+    {
+      "category": "Outdoor & Camping",
+      "net": 1961020.5,
+      "gp": 598727.54,
+      "disc": 75056.85,
+      "gross": 2115257.2600000002,
+      "margin": 0.30531426876975537
+    },
+    {
+      "category": "Gourmet Grocery",
+      "net": 813658.78,
+      "gp": 327544.89999999997,
+      "disc": 21321.0,
+      "gross": 825695.57,
+      "margin": 0.4025580600260959
+    },
+    {
+      "category": "Beauty & Care",
+      "net": 728645.37,
+      "gp": 428497.61,
+      "disc": 19816.75,
+      "gross": 756529.62,
+      "margin": 0.5880742918876983
+    },
+    {
+      "category": "Toys & Games",
+      "net": 647425.71,
+      "gp": 264222.34,
+      "disc": 42548.05,
+      "gross": 679550.51,
+      "margin": 0.4081122141411407
+    }
+  ],
+  "channel_share_first": {
+    "In-Store": 0.46542360504090263,
+    "Online": 0.3722245612055994,
+    "Mobile App": 0.1623518337534981
+  },
+  "channel_share_last": {
+    "In-Store": 0.3385501045390505,
+    "Online": 0.3421496843933876,
+    "Mobile App": 0.319300211067562
+  },
+  "region_channel": {
+    "In-Store": {
+      "North": 1732030.93,
+      "East": 2016247.77,
+      "South": 1523241.01,
+      "West": 1252716.26
+    },
+    "Online": {
+      "North": 1572417.4,
+      "East": 1750132.66,
+      "South": 1384894.31,
+      "West": 999727.54
+    },
+    "Mobile App": {
+      "North": 1145329.51,
+      "East": 1153842.12,
+      "South": 923136.31,
+      "West": 707917.34
+    }
+  },
+  "avg_next_quarter_retention": 0.34406932846288474,
+  "return_hotspot": {
+    "category": "Apparel",
+    "rate": 0.2275185414091471,
+    "instore_rate": 0.16879759659051213
+  },
+  "abc_counts": {
+    "A": 36,
+    "B": 28,
+    "C": 25
+  },
+  "a_items_share_of_skus": 0.4044943820224719
+}

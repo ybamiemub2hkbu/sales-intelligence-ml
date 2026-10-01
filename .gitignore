@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+*.egg-info/
+
+# Generated data (regenerate with: python main.py --steps generate clean)
+data/raw/
+data/processed/
+models/
+
+# OS / editors
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

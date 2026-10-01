@@ -1,0 +1,57 @@
+antecedent,consequent,pair_orders,support,confidence,consequent_support,lift
+Gourmet Grocery,Home & Kitchen,5137,0.05543,0.31994,0.2753,1.16215
+Home & Kitchen,Gourmet Grocery,5137,0.05543,0.20135,0.17325,1.16215
+Apparel,Outdoor & Camping,4214,0.04547,0.15088,0.19328,0.78061
+Outdoor & Camping,Apparel,4214,0.04547,0.23526,0.30138,0.78061
+Apparel,Beauty & Care,3855,0.0416,0.13802,0.18032,0.76543
+Beauty & Care,Apparel,3855,0.0416,0.23069,0.30138,0.76543
+Toys & Games,Gourmet Grocery,1887,0.02036,0.13175,0.17325,0.76042
+Gourmet Grocery,Toys & Games,1887,0.02036,0.11753,0.15455,0.76042
+Beauty & Care,Sports & Fitness,2491,0.02688,0.14906,0.19669,0.75785
+Sports & Fitness,Beauty & Care,2491,0.02688,0.13666,0.18032,0.75785
+Electronics,Apparel,5931,0.064,0.22556,0.30138,0.74841
+Apparel,Electronics,5931,0.064,0.21235,0.28374,0.74841
+Electronics,Sports & Fitness,3868,0.04174,0.1471,0.19669,0.74787
+Sports & Fitness,Electronics,3868,0.04174,0.2122,0.28374,0.74787
+Home & Kitchen,Beauty & Care,3425,0.03696,0.13425,0.18032,0.74447
+Beauty & Care,Home & Kitchen,3425,0.03696,0.20495,0.2753,0.74447
+Toys & Games,Beauty & Care,1917,0.02069,0.13384,0.18032,0.74223
+Beauty & Care,Toys & Games,1917,0.02069,0.11471,0.15455,0.74223
+Apparel,Sports & Fitness,4043,0.04363,0.14475,0.19669,0.73595
+Sports & Fitness,Apparel,4043,0.04363,0.2218,0.30138,0.73595
+Electronics,Toys & Games,2985,0.03221,0.11352,0.15455,0.7345
+Toys & Games,Electronics,2985,0.03221,0.20841,0.28374,0.7345
+Sports & Fitness,Home & Kitchen,3677,0.03968,0.20172,0.2753,0.73273
+Home & Kitchen,Sports & Fitness,3677,0.03968,0.14412,0.19669,0.73273
+Gourmet Grocery,Apparel,3538,0.03818,0.22035,0.30138,0.73114
+Apparel,Gourmet Grocery,3538,0.03818,0.12667,0.17325,0.73114
+Home & Kitchen,Outdoor & Camping,3603,0.03888,0.14122,0.19328,0.73065
+Outdoor & Camping,Home & Kitchen,3603,0.03888,0.20115,0.2753,0.73065
+Home & Kitchen,Toys & Games,2871,0.03098,0.11253,0.15455,0.7281
+Toys & Games,Home & Kitchen,2871,0.03098,0.20045,0.2753,0.7281
+Home & Kitchen,Apparel,5576,0.06017,0.21856,0.30138,0.72518
+Apparel,Home & Kitchen,5576,0.06017,0.19964,0.2753,0.72518
+Beauty & Care,Electronics,3419,0.03689,0.2046,0.28374,0.72107
+Electronics,Beauty & Care,3419,0.03689,0.13002,0.18032,0.72107
+Outdoor & Camping,Electronics,3664,0.03954,0.20456,0.28374,0.72093
+Electronics,Outdoor & Camping,3664,0.03954,0.13934,0.19328,0.72093
+Gourmet Grocery,Beauty & Care,2074,0.02238,0.12917,0.18032,0.71634
+Beauty & Care,Gourmet Grocery,2074,0.02238,0.12411,0.17325,0.71634
+Gourmet Grocery,Outdoor & Camping,2214,0.02389,0.13789,0.19328,0.71343
+Outdoor & Camping,Gourmet Grocery,2214,0.02389,0.1236,0.17325,0.71343
+Toys & Games,Apparel,3072,0.03315,0.21448,0.30138,0.71166
+Apparel,Toys & Games,3072,0.03315,0.10999,0.15455,0.71166
+Sports & Fitness,Outdoor & Camping,2499,0.02697,0.1371,0.19328,0.70931
+Outdoor & Camping,Sports & Fitness,2499,0.02697,0.13952,0.19669,0.70931
+Toys & Games,Sports & Fitness,1962,0.02117,0.13698,0.19669,0.69643
+Sports & Fitness,Toys & Games,1962,0.02117,0.10764,0.15455,0.69643
+Home & Kitchen,Electronics,5027,0.05424,0.19704,0.28374,0.69443
+Electronics,Home & Kitchen,5027,0.05424,0.19118,0.2753,0.69443
+Sports & Fitness,Gourmet Grocery,2173,0.02345,0.11921,0.17325,0.68808
+Gourmet Grocery,Sports & Fitness,2173,0.02345,0.13534,0.19669,0.68808
+Gourmet Grocery,Electronics,3122,0.03369,0.19444,0.28374,0.68529
+Electronics,Gourmet Grocery,3122,0.03369,0.11873,0.17325,0.68529
+Beauty & Care,Outdoor & Camping,2208,0.02383,0.13213,0.19328,0.68361
+Outdoor & Camping,Beauty & Care,2208,0.02383,0.12327,0.18032,0.68361
+Toys & Games,Outdoor & Camping,1836,0.01981,0.12819,0.19328,0.66321
+Outdoor & Camping,Toys & Games,1836,0.01981,0.1025,0.15455,0.66321
